@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ page import ="java.util.*,com.tax.controller.*,com.tax.dao.*,com.tax.vo.*" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -8,12 +9,26 @@ boolean hasLogined = false;
 if(username!=null){
 	hasLogined = true;
 }
-
 System.out.println(hasLogined);
+//ArrayList<consult> arr =(ArrayList<consult>) request.getSession().getAttribute("arraylist");
+DB_cons cons=new DB_cons();
+ArrayList<consult> arrCons = new ArrayList<consult>();
+
+arrCons =cons.listCons();
+int size=arrCons.size();
+System.out.println(arrCons.get(0).getConsID());
+int ConsId =arrCons.get(0).getConsID();
+System.out.println(arrCons.get(0).getDate());
+System.out.println(arrCons.get(0).getConsDetail());
+System.out.println(arrCons.get(0).getConsName());
+System.out.println(arrCons.get(0).getSeenNum());
+System.out.println(arrCons.get(0).getKeptNum());
+System.out.println(arrCons.get(0).getAnsNum());
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html>
+
 <head>
  <base href="<%=basePath%>">
 <title>安徽省国家税务局税企互助交流平台</title>
@@ -23,7 +38,18 @@ System.out.println(hasLogined);
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script> 
 <link rel="stylesheet" href="css/tips.css" />
 <link rel="stylesheet" href="css/ScreenChange.css" /> 
-
+ <script type="text/javascript">  
+			function a(){
+				$.ajax({  
+            		url:"../../Java Resources/src/com/tax/controller/listConsult.java",//servlet文件的名称
+            		type:"GET",
+            		success:function(e){
+            			alert("servlet调用成功！");
+            		}
+            	});
+				
+			}
+        </script>
 <style type="text/css">
 
 	body {
@@ -34,7 +60,7 @@ System.out.println(hasLogined);
 </style>
 
 </head>
-<body>
+<body onload="a()">
 <div class="top" style="display:flex;justify-content:space-around;">
 		<div class="logo"  style=""></div>
 		<div class="daohang">
@@ -254,6 +280,57 @@ System.out.println(hasLogined);
 										<span class="star" >收藏</span>
 										<span class="has_star" style="display: none">已收藏</span></li>
 									</ul>
+									<%
+									Date ConsDate;
+									String ConsName;
+									int SeenNum;
+									String ConsDetail;
+									int KeptNum;
+									int AnsNum;
+									ArrayList<String> Category;
+								   String cate="";
+									 for(int i=0;i<size;i++){
+										 ConsDate =arrCons.get(i).getDate();
+										 ConsName =arrCons.get(i).getConsName();
+										 SeenNum=arrCons.get(i).getSeenNum();
+										 ConsDetail =arrCons.get(i).getConsDetail();
+										 KeptNum =arrCons.get(i).getKeptNum();
+										 AnsNum=arrCons.get(i).getAnsNum();
+										 Category=arrCons.get(i).getCategory();
+										 for(int j=0;j<Category.size();j++){
+										 cate=Category.get(j)+","+cate;
+										 }
+										 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
+										 out.println("<li style=\"text-overflow: ellipsis;white-space: nowrap;width: 1000px;  height: 34px;overflow: hidden;\">\n");
+										 out.println("<a style=\" height: 20px;   line-height: 20px;color: black;overflow: hidden;margin: 6px auto;float:left;\" href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</a>\n");
+										 out.println("</li>\n");
+										 out.println("<li style=\" height:35px;width: 160px;float: right; text-align: right;\" >\n");
+										 out.println("<span>"+ConsDate+"</span>\n");
+										 out.println("</li>\n");
+										 out.println("<li style=\"width: 110px; height: 35px;\">\n");
+										 out.println("<span>浏览：</span>\n");
+										 out.println("<span>"+SeenNum+"</span>\n");
+										 out.println("</li>\n");
+										 out.println("<li style=\"width: 110px; height: 35px;\">\n");
+										 out.println("<span>回答：</span>\n");
+										 out.println("<span>"+AnsNum+"</span>\n");
+										 out.println("</li>\n");
+										 out.println("<li style=\"     width: 110px;line-height: 35px;float: left; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;\">\n");
+										 out.println("<span>收藏：</span>\n");
+										 out.println("<span>"+KeptNum+"</span>\n");
+										 out.println("</li>\n");
+										 out.println("<li style=\" width: 500px;height: 35px;text-overflow: ellipsis; white-space: nowrap;overflow: hidden;line-height: 35px; float: left;\">\n");
+										 out.println("<span>分类：</span>\n");
+										 out.println("<span>"+cate+"</span>\n");
+										 out.println("</li>\n");
+										 out.println("<li	onClick=\"star(this)\" style=\"float:right;width:243px; margin-right: 45px;height:30px; line_height:30px;text-overflow: ellipsis; white-space: nowrap;overflow: hidden;cursor:pointer;\">\n");
+										 out.println("<span class=\"star\" style=\"float:right\" >收藏</span>\n");
+										 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
+										 out.println("</ul>");		
+										 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+									 }			
+									
+									%>
 							</div>
 							
 								<div id="quesPaging_1" class="box">
