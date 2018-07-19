@@ -59,9 +59,8 @@ public class userLogin extends HttpServlet {
 			response.sendRedirect("webPages/NewFile.jsp");
 			
 		}else {
-			out.print("<script>alert('登录失败!');window.location.href='http://localhost:8080/ServerTest/webPages/jiedu/login.jsp'</script>");
 			System.out.println("登录失败");
-			response.sendRedirect("webPages/jiedu/login.jsp");
+			out.print("<script language='javascript'>alert('输入有误，请重试');window.location.href='webPages/jiedu/login.jsp';</script>");
 //			response.sendRedirect("/webPages/login.jsp");
 		}
 //		RequestDispatcher requestDispatcher=request.getRequestDispatcher("http://www.baidu.com");

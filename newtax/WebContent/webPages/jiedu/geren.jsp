@@ -80,47 +80,6 @@ body {
 		</div>
 	</div>
 
-
-	<script>
-        $(function(){
-           $(".user_text").hover(function(){
-               var width_a = $(this).width();
-               var width_b = $(this).find(".user_id").width();
-               var indent_px = width_a - width_b;
-               if( width_a <= width_b ){
-                   $(this).css("text-indent",indent_px);
-               }
-           },function(){
-               $(this).css("text-indent","0");
-           });
-        });
-    </script>
-	<!-- input点击清除value值 -->
-	<script type="text/javascript">
-		wap_val = [];
-		$(".ssearch").each(function(i) {
-			wap_val[i] = $(this).val();
-			$(this).focusin(function() {
-				if ($(this).val() == wap_val[i]) {
-					$(this).val("");
-				}
-			}).focusout(function() {
-				if ($.trim($(this).val()) == "") {
-					$(this).val(wap_val[i]);
-				}
-			});
-		});
-		//  用户名显示
-		 $(".user_id").each(function(){
-		  var maxwidth=4;
-		  if($(this).text().length > maxwidth){
-		    $(this).text($(this).text().substring(0,maxwidth));
-		    $(this).html($(this).html()+'...');
-		  }
-		}); 
-	</script>
-</body>
-</html>
 <div class="content">
 	<div class="path_nav">
 		<span class="touch">当前位置：<a href="webPages/jiedu/register.jsp"
@@ -133,8 +92,7 @@ body {
 		</div>
 		<div class="content_middle">
 			<div class="content_middle_m">
-				<form id="addUser" action="/shuiwu/geren" method="post"
-					enctype="multipart/form-data" onsubmit="return checkUser();">
+				<form id="addUser" action="register" method="post">
 					<input type="hidden" name="type" value="0">
 					<table style="margin: 0 auto;">
 						<tr>
@@ -158,14 +116,14 @@ body {
 						</tr>
 						<tr>
 							<td style="width: 25%;">密码</td>
-							<td style="width: 75%;"><input id="pwd" type="password"
+							<td style="width: 75%;"><input id="userPassword" type="password"
 								name="userPassword" placeholder="请输入密码" value=""></td>
 							<td><span id="pwd1" class="yanzheng"></span></td>
 						</tr>
 						<tr>
 							<td style="width: 25%;">确认密码</td>
 							<td style="width: 75%;"><input id="confirmPwd"
-								type="password" name="pwd" placeholder="请确认密码" value="">
+								type="password" name="confirmPwd" placeholder="请确认密码" value="">
 							</td>
 							<td><span id="confirmPwd1" class="yanzheng"></span></td>
 						</tr>
@@ -189,6 +147,10 @@ body {
 		</div>
 	</div>
 </div>
+
+</body>
+</html>
+
 <!-- footer start -->
 
 
@@ -298,181 +260,6 @@ body {
 </body>
 </html>
 <!-- footer end -->
-<script>
-	
-	
-		$("#userName").blur(function() {
-			var userName = $("#userName").val();
-			if (userName.length != 0 && userName !="") {
-				$.post('/lagsms/register/volidationUser', {
-					userName : $("#userName").val()
-				}, function(data) {
-					console.log(data);
-					if (data.userName == 100) {
-					} else {
-						$("#userName1").html('用户名已存在!');
-					}
-				});
-			}
-		});
-		$("#userTelephone").blur(function(){
-			var userTelephone = $("#userTelephone").val();
-			if (userTelephone.length != 0 && userTelephone != "") {
-				$.post('/lagsms/register/volidationUser', {
-					userTelephone : $("#userTelephone").val()
-				}, function(data) {
-					console.log(data);
-					if (data.userTelephone == 300) {
-					} else {
-						$("#userTelephone1").html('手机号已存在!');
-					}
-				});
-			}
-		});
-		
-		$('#userName').bind('input propertychange', function() {
-			var userName = $("#userName").val();
-
-			console.log("document--", userName);
-			if (userName.length === 0) {
-				$("#userName1").html('用户名不能为空!');
-				return;
-			} else {
-				$("#userName1").html('');
-			}
-		});
-		$('#mail').bind('input propertychange', function() {
-			var mail = $("#mail").val();
-
-			console.log("document--", mail);
-			if (mail.length === 0) {
-				$("#mail1").html('邮箱不能为空!');
-				return;
-			} else {
-				$("#mail1").html('');
-			}
-		});
-		$('#userTelephone').bind('input propertychange', function() {
-			var userTelephone = $("#userTelephone").val();
-
-			console.log("document--", userTelephone);
-			if (userTelephone.length === 0) {
-				$("#userTelephone1").html('电话号不能为空!');
-				return;
-			} else {
-				$("#userTelephone1").html('');
-			}
-		});
-		$('#pwd').bind('input propertychange', function() {
-			var pwd = $("#pwd").val();
-
-			console.log("document--", pwd);
-			if (pwd.length === 0) {
-				$("#pwd1").html('密码不能为空!');
-				return;
-			} else {
-				$("#pwd1").html('');
-			}
-		});
-		$('#confirmPwd').bind('input propertychange', function() {
-			var confirmPwd = $("#confirmPwd").val();
-
-			console.log("document--", confirmPwd);
-			if (confirmPwd.length === 0) {
-				$("#confirmPwd1").html('密码不能为空!');
-				return;
-			} else {
-				$("#confirmPwd1").html('');
-			}
-		});
-		$('#verifyCode').bind('input propertychange', function() {
-			var confirmPwd = $("#verifyCode").val();
-
-			console.log("document--", confirmPwd);
-			if (verifyCode.length === 0) {
-				$("#code1").html('验证码不能为空!');
-				return;
-			} else {
-				$("#code1").html('');
-			}
-		});
-		function updateVerifyCode() {
-			event.target.src = event.target.src + "?t=" + Date.now();
-		}
-
-		function checkUser() {
-			var userName = $("#userName").val();
-			var mail = $("#mail").val();
-			var userTelephone = $("#userTelephone").val();
-			var pwd = $("#pwd").val();
-			var confirmPwd = $("#confirmPwd").val();
-			var verifyCode = $("#verifyCode").val();
-
-			if (userName.length == 0) {
-				$("#userName1").html('用户名不能为空!');
-				return false;
-			}
-
-			if (mail.length == 0) {
-				$("#mail1").html('邮箱不能为空!');
-				return false;
-			}
-			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
-			if (!re.test(mail)) {
-				$("#mail1").html('邮箱格式错误!');
-				return false;
-			}
-			if (userTelephone.length == 0) {
-				$("#userTelephone1").html('电话号不能为空!');
-				return false;
-			}
-			var req = /^(?:13\d|14\d|15\d|17\d|18\d)-?\d{5}(\d{3}|\*{3})$/;
-			if (!req.test(userTelephone)) {
-				$("#userTelephone1").html('您输入的电话号码格式错误!');
-				return false;
-			}
-			if (pwd.length == 0) {
-				$("#pwd1").html('密码不能为空!');
-				return false;
-			}
-			if (pwd.length > 15 || pwd.length < 6) {
-				$("#pwd1").html('请输入6-15位密码!');
-				return false;
-			}
-			if (confirmPwd.length == 0) {
-				$("#confirmPwd1").html('密码不能为空!');
-				return false;
-			}
-			if (pwd != confirmPwd) {
-				$("#confirmPwd1").html('两次密码输入不一致!');
-				return false;
-			}
-			if (verifyCode.length == 0) {
-				$("#code1").html('验证码不能为空!');
-				return false;
-			}
-			if ($("#verifyCode").data('ok') == '1') {
-				return true;
-			}
-			if (verifyCode != null) {
-				$.post('/lagsms/verifyCode', {
-					verifyCode : $('#verifyCode').val()
-				}, function(data) {
-					console.log(data);
-
-					if (data.code == 200) {
-						alert("注册成功！请登录！");
-						$("#verifyCode").data('ok', '1');
-						$('#addUser').submit();
-					} else {
-						//alert(1);
-						$("#code1").html('验证码错误!');
-					}
-				});
-			}
-			return false;
-		}
-	</script>
 
 
 </body>

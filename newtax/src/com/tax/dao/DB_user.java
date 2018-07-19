@@ -1,4 +1,5 @@
 package com.tax.dao;
+import java.io.PrintWriter;
 import java.sql.*;
 
 import com.tax.comm.DBUtil;
@@ -56,7 +57,7 @@ public class DB_user {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from user where userID = ' "+ userID;
+			String sql = "select * from user where userID = '"+ userID + "'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
