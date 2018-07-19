@@ -128,7 +128,7 @@ System.out.println(hasLogin);
         <div class="element_left">
             <div class="data_left">
                 <div class="data_left_1">
-                    <p>个人资料<a href=""><span>编辑</span><img src="image/personmore.png"></a></p>
+                    <p>个人资料<a href="webPages/jiedu/modify.jsp"><span>编辑</span><img src="image/personmore.png"></a></p>
 
                 </div>
                 <div class="data_left_2">
@@ -197,10 +197,10 @@ System.out.println(hasLogin);
                 </ul>
                 <div class="small_more">
                         <span class="youxiu_up_more">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore1.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                     <span class="youxiu_up_more Notdisplay">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore2.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                 </div>
                 <div class="xian1">
@@ -264,10 +264,10 @@ System.out.println(hasLogin);
                 </ul>
                 <div class="small_more">
                         <span class="youxiu_up_more">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore3.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                     <span class="youxiu_up_more Notdisplay">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore4.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                 </div>
                 <div class="xian1"></div>
@@ -345,10 +345,10 @@ System.out.println(hasLogin);
                 </ul>
                 <div class="small_more">
                         <span class="youxiu_up_more">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore5.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                     <span class="youxiu_up_more Notdisplay">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore6.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                 </div>
                 <div class="xian1">
@@ -405,10 +405,10 @@ System.out.println(hasLogin);
                 </ul>
                 <div class="small_more">
                         <span class="youxiu_up_more">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore7.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                     <span class="youxiu_up_more Notdisplay">
-                            <a href="">更多&nbsp;<img src="image/home/blue_head.png"></a>
+                            <a href="webPages/jiedu/mymore8.jsp">更多&nbsp;<img src="image/home/blue_head.png"></a>
                         </span>
                 </div>
                 <div class="xian1"></div>
