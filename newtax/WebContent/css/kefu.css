@@ -141,7 +141,7 @@ body{
  ul li{
 	list-style:none!important;
 }
-.cs_wrap{
+.kefu_online{
 	width: 100%;
 	background: url(../image/home/kefu.png) no-repeat;
 	background-size:cover;
@@ -189,12 +189,12 @@ body{
     top: -88%;
     left: 1%;
 }
-.zaixian{
+.top_text{
 	color: #fff;
     line-height: 35px;
     margin-left: 65px;
 }
-.telnum{
+.number{
 	color: #fff;
     font-size: 12px;
     float: right;
@@ -334,7 +334,7 @@ body{
 	height:140px;
 	position:relative;
 }
-.send_message{
+.post-ques{
 	width: 83%;
     margin: 10px 15px;
     resize: none;
@@ -422,7 +422,7 @@ body{
 
 
 
-.cs_wrap{
+.kefu_online{
 	
 	width: 100%;
     height: auto;
@@ -432,7 +432,7 @@ body{
     min-height:600px;
 
 }
-.dialogue{
+.board{
 	position:absolute;
 	top:20px;
 	left:50px;
@@ -441,7 +441,7 @@ body{
 /* 	background:white;  */
 	min-width:800px;
 }
-.titleImg{
+.top_Img{
 	position:absolute;
 	left:150px;
 	right:150px;
@@ -469,12 +469,12 @@ body{
     top: -88%;
     left: 1%;
 }
-.zaixian{
+.top_text{
 	color: #fff;
     line-height: 35px;
     margin-left: 65px;
 }
-.telnum{
+.number{
 	color: #fff;
     font-size: 12px;
     float: right;
@@ -491,7 +491,7 @@ body{
     cursor:pointer;
 }
 
-.chatwindow{
+.all_windows{
 	top: 210px;
 	left:100px;
 	right:100px;
@@ -592,7 +592,7 @@ body{
     border: solid 8px;
     border-color:  #fff #3e81e0 #fff #fff;
 }
-.pic-left {  
+.robot-Img {  
     float: left;  
     width: 45px;  
     height: 45px; 
@@ -628,7 +628,7 @@ body{
 	background:#fff;
 	min-height:100px;
 }
-.left_all{
+.windows_left{
     height: 100%;
     width: 76%;
     float: left;

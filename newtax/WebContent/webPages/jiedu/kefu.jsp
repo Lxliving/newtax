@@ -13,6 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<script type="text/javascript" src="js/jquery.min.js"></script>	
 	<script type="text/javascript" src="js/jqpaginator.min.js"></script>
+		<script type="text/javascript" src="js/jqpaginator.js"></script>
 	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script> 
 	<link rel="icon" href="image/home/favicon.gif" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="css/kefu.css"/>
@@ -23,29 +24,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </style>  
 </head>
 <body>
-	<div class="cs_wrap" id="wrap">
-		<div class="dialogue">
+	<div class="kefu_online" id="kefu">
+		<div class="board">
 			<!-- 	image  -->
-			<div class="titleImg">
+			<div class="top_Img">
 				<img src="image/icon/top.png" />
 			</div>
 			<!-- nav -->
 			<div class="title">
 				<img src="image/icon/robot.png" /> 
-				<span class="zaixian">安徽国税税企客服在线 </span> 
-				<span class="telnum">咨询热线：0551-12366</span>
+				<span class="top_text">安徽国税税企客服在线 </span> 
+				<span class="number">咨询热线：0551-12366</span>
 				<span class="close fr">
 					<!-- <a onClick="javascript :history.back(-1);">×</a> -->
 				</span>
 			</div>
 			<!-- 整个window -->
-			<div class="chatwindow clearfix">
+			<div class="all_windows">
 				<!-- 聊天窗口 左部分 -->
-				<div class="left_all" style="background:white;">
-					<div id="scrolldIV" class="chatleft">	 
-					<div class="message clearfix"> <!-- 每条对话总框 -->  
+				<div class="windows_left" style="background:white;">
+					<div id="chat-online" class="chatleft">	 
+					<div class="postmessage"> 
 			            <p class="content-time"><span class="content-time-span"> <span class="firstTime"><span>2018-07-17 15:17:48</span></span> </span></p><!-- 对话时间 -->  
-			            <img class="pic-left" src="image/icon/robothead.png">  
+			            <img class="robot-Img" src="image/icon/robothead.png">  
 			            <div class="text-style-left">  
 			                <div class="pos-left">  
 			                    <div class="bubble">  
@@ -64,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="chatbottomline"></div>
 				<!-- 底部发送 -->
 				<div class="chatbottom">
-					<textarea id="question_message" class="send_message"></textarea>
+					<textarea id="question_message" class="post-ques"></textarea>
 					<button id="sendBtn" class="send" onclick="sendClick()" style="background: rgb(153, 153, 153);">发送</button>
 				</div>
 				</div>
@@ -72,42 +73,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="chatright">
 					<p class="hotquestion">热点问题</p>
 					<div class="tax_type">
-					<ul class = "questions">                                                                                           
-					<li style="padding:2px;">
-					<a onclick="question(0)" href="#">开票系统无法正常工作怎么办？</a></li>
-					<li style="padding:2px;">
-					<a onclick="question(1)" href="#">冠名发票第一次是如何申请领购？</a></li>
-					<li style="padding:2px;">
-					<a onclick="question(2)" href="#">国税发票代开需要什么资料？</a></li>
-					<li style="padding:2px;">
-					<a onclick="question(3)" href="#">手工发票怎么开？</a></li>
-					<li style="padding:2px;">
-					<a onclick="question(4)" href="#">怎么开具开具红字增值税专用发票?</a></li>
-					<li style="padding:2px;">
-					<a onclick="question(5)" href="#">增值税纳税申报表申报有误能否作废？</a></li>
-					<li style="padding:2px;">
-					<a onclick="question(6)" href="#">一般纳税人资格认定标准是什么？</a></li>
-					</ul>
-					</div>
+					<ul>                                                                                         
+					<li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('开票系统无法正常工作怎么办？', '&amp;nbsp;111111 ')">开票系统无法正常工作怎么办？</a></li>
+                    <li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('冠名发票第一次是如何申请领购？', '&amp;nbsp;222222 ')">冠名发票第一次是如何申请领购？</a></li>
+                    <li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('国税发票代开需要什么资料？', '&amp;nbsp;333333 ')">国税发票代开需要什么资料？</a></li>
+                    <li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('手工发票怎么开？', '&amp;nbsp;44444 ')">手工发票怎么开？</a></li>
+                    <li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('怎么开具开具红字增值税专用发票?', '&amp;nbsp;55555 ')">怎么开具开具红字增值税专用发票?</a></li>
+                    <li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('增值税纳税申报表申报有误能否作废？', '&amp;nbsp;66666')">增值税纳税申报表申报有误能否作废？</a></li>
+                    <li style="padding:2px;" ><a onmouseup="this.style.color='#62778C'" onclick="show_robot_dialog('一般纳税人资格认定标准是什么？', '&amp;nbsp;7777 ')">一般纳税人资格认定标准是什么？</a></li>
+                    </ul> 
+                   </div>
 					<div id="demo1" class="clearfix">
-					<ul>
-					<li class="prev disabled" style="padding:0px;border-radius: 5px;" jp-role="prev" jp-data="0">
-					<a href="javascript:void(0);">上一页</a></li>
-					<li class="page active" jp-role="page" jp-data="1">
-					<a href="javascript:void(0);"> 1 / 1 </a></li>
-					<li class="next" style="padding:0px;border-radius: 5px;" jp-role="next" jp-data="2">
-					<a href="javascript:void(0);">下一页</a></li>
-					</ul>
+                 <li class="prev disabled" style="padding:0px;border-radius: 5px;" jp-role="prev" jp-data="0">
+                 <a href="javascript:void(0);">上一页</a></li>
+                 <li class="page active" jp-role="page" jp-data="1">
+                 <a href="javascript:void(0);"> 1 / 2 </a></li>
+                 <li class="next" style="padding:0px;border-radius: 5px;" jp-role="next" jp-data="2">
+                 <a href="javascript:void(0);">下一页</a></li></div>
 					</div>
-					<!-- 分页 end-->					
-				</div>
 				<!-- 请输入 imge -->
 			</div>
 		</div>
 	</div>
 	<!-- 页面高度  -->
 	<script type="text/javascript">
-	
+
 		  //获取输入值 改变sendbtn 颜色
 		  $('textarea').bind('input propertychange', function() {
 	            var buttons = document.getElementById("sendBtn");
