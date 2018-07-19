@@ -2,8 +2,8 @@ package com.tax.comm;
 import java.sql.*;
 public class DBUtil {
 	
-	private static final String DRIVER="com.mysql.jdbc.Driver";
-	private static final String URL="jdbc:mysql://localhost:3306/tax";
+	private static final String DRIVER="com.mysql.cj.jdbc.Driver";
+	private static final String URL="jdbc:mysql://localhost:3306/tax?useSSL=false";
 	private static final String USER="root";
 	private static final String PASS="1234";
 	private static Connection con =null;
