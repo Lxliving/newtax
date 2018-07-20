@@ -95,6 +95,15 @@ public class DB_cons {
 		}
 		return cons;
 	}
+	public ArrayList<consult> getToList(ArrayList<Integer> consIDArr){
+		int len = consIDArr.size();
+		ArrayList<consult> arr = new ArrayList<consult>();
+		for(int i=0; i<len; i++) {
+			arr.add(getByID(consIDArr.get(i)));
+		}
+		return arr;
+	}
+	
 	public ArrayList<consult> listCons(){
 		ArrayList<consult> arrCons = new ArrayList<consult>();
 		PreparedStatement pstm = null;

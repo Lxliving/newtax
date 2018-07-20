@@ -22,6 +22,7 @@ if(username!=null){
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script> 
 <link rel="stylesheet" href="css/tips.css" />
 <link rel="stylesheet" href="css/ScreenChange.css" /> 
+<script src="ckeditor_4.10.0_standard_easyimage/ckeditor/ckeditor.js"></script>
 
 <style type="text/css">
 
@@ -59,21 +60,53 @@ if(username!=null){
 			</ul>
 		</div>
 		<div class="user">
-			<div class="user_content">	
-						<a style="padding: 0 50px;">
-							<img alt="" src="image/header/u198.png" class="person">
-						</a>
-						<div style="position: absolute; left: 20px; line-height: 0px;">
-							<div style="line-height: 13px;">
-								<a href="webPages/jiedu/login.jsp">登录</a>
-							</div>
-							<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
-							<div style="text-align: left; line-height: 13px;">
-								<a href="webPages/jiedu/register.jsp">注册</a>
-							</div>
-						</div>				
+		<div class="user_content">
+
+		<%
+			if (username == null){
+				out.println("<a href=\"webPages/jiedu/login.jsp\" style=\"padding: 0 50px;\"> <img src=\"image/header/u198.png\" class=\"person\">\n");
+				out.println("</a>\n");
+				out.println("<div style=\"position: absolute; left: 20px; line-height: 0px;\">\n");
+				out.println("<div style=\"line-height: 13px;\">\n");
+				out.println("<a href=\"webPages/jiedu/login.jsp\">登录</a>\n");
+				out.println("</div>\n");
+				out.println("<div style=\"line-height: 13px;\">&nbsp;/&nbsp;</div>\n");
+				out.println("<div style=\"text-align: left; line-height: 13px;\">\n");
+				out.println("<a href=\"webPages/jiedu/register.jsp\">注册</a>\n");
+				out.println("</div>\n");
+				out.println("</div>\n");
+			}
+			else{
+				out.println("<a href=\"webPages/usercenter/MyIntro.jsp\" style=\"padding: 0 50px;\"> <img src=\"image/header/u198.png\" class=\"person\">\n");
+				out.println("</a>\n");
+				out.println("<div style=\"position: absolute; left: 20px; line-height: 0px;\">\n");
+				out.println("<div style=\"line-height: 13px;\">\n");
+				out.println("<a href=\"webPages/usercenter/MyIntro.jsp\">"+ username +"</a>\n");
+				out.println("</div>\n");
+				out.println("<div style=\"line-height: 13px;\">&nbsp;/&nbsp;</div>\n");
+				out.println("<div style=\"text-align: left; line-height: 13px;\">\n");
+				out.println("<a href=\"webPages/jiedu/login.jsp\">退出</a>\n");
+				out.println("</div>\n");
+				out.println("</div>\n");
+			}
+		
+		%>
+		<!-- 
+			<a href="webPages/jiedu/login.jsp" style="padding: 0 50px;"> <img
+				src="image/header/u198.png" class="person">
+			</a>
+			<div style="position: absolute; left: 20px; line-height: 0px;">
+				<div style="line-height: 13px;">
+					<a href="webPages/jiedu/login.jsp">登录</a>
+				</div>
+				<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
+				<div style="text-align: left; line-height: 13px;">
+					<a href="webPages/jiedu/register.jsp">注册</a>
+				</div>
 			</div>
+		-->
 		</div>
+	</div>
 	</div>
 	<div class="mask"></div> 
 <div class="dialog"> 
@@ -173,27 +206,25 @@ if(username!=null){
 		<!--其他回答 end -->
 		<div style=" margin-top: 51px;">
 			<p class="ques_content_three_p">我要回答</p>
-			
-				
-				
-					<span style="float:left;line-height:40px;font-size:18px;margin:20px 0">请先</span>
-					<div style="
-							width:120px;
-							height:40px;
-							line-height:40px;
-							text-align:center;
-							float:left;
-							margin:20px 10px;
-							background:rgb(26,86,169)">
-						<a href="webPages/jiedu/login.jsp" 
-							style="
-								width:100%;
-								height:100%;
-								color:#fff;
-								text-decoration: none;
-								font-weight:bold">登录</a>
-					</div>
-				
+			        <!-- 如果没登录 -->
+			        <%
+			        if (username == null){
+			        out.println("<span style=\"float:left;line-height:40px;font-size:18px;margin:20px 0\">请先</span>");
+					out.println("<div style=\"width:120px;height:40px;line-height:40px;text-align:center;float:left;margin:20px 10px;background:rgb(26,86,169)\">");
+					out.println("<a href=\"webPages/jiedu/login.jsp\" ");	
+					out.println("style=\"width:100%;height:100%;color:#fff;text-decoration: none;font-weight:bold\">登录</a>");		
+					out.println("</div>");
+			        }
+			        else{
+			        	out.println("<!-- 如果已登录 -->");
+			        	out.println("<form action=\"\" id=\"\" method=\"post\">");
+			        	out.println("<textarea id=\"editor\" class=\"ckeditor\"></textarea>");
+			        	out.println("<button id=\"\" type=\"submit\" ");
+			        			out.println("style=\"background-color:#1B55A9;width:180px;height: 40px;border: none;color: white;font-size: 20px;cursor: pointer;float:right;margin-top:1.5%;\">提交</button>");
+			        			out.println("</form>");
+			        }
+				    %>
+				    <!-- 如果已登录 end-->
 			
 		</div>
 	</div>
