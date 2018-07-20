@@ -2,11 +2,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String username =(String)request.getSession().getAttribute("username");
-boolean hasLogined = false;
-if(username!=null){
-	hasLogined = true;
-}
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -19,6 +14,7 @@ if(username!=null){
 <link rel="stylesheet" type="text/css" href="css/question.css" />
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 <link rel="stylesheet" href="css/ScreenChange.css" />
+<script type="text/javascript" src="js/star.js"></script> 
 <link rel="stylesheet" href="css/tips.css" />
 <style type="text/css">
 body {
@@ -55,53 +51,21 @@ body {
 			</ul>
 		</div>
 		<div class="user">
-		<div class="user_content">
-
-		<%
-			if (username == null){
-				out.println("<a href=\"webPages/jiedu/login.jsp\" style=\"padding: 0 50px;\"> <img src=\"image/header/u198.png\" class=\"person\">\n");
-				out.println("</a>\n");
-				out.println("<div style=\"position: absolute; left: 20px; line-height: 0px;\">\n");
-				out.println("<div style=\"line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/jiedu/login.jsp\">登录</a>\n");
-				out.println("</div>\n");
-				out.println("<div style=\"line-height: 13px;\">&nbsp;/&nbsp;</div>\n");
-				out.println("<div style=\"text-align: left; line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/jiedu/register.jsp\">注册</a>\n");
-				out.println("</div>\n");
-				out.println("</div>\n");
-			}
-			else{
-				out.println("<a href=\"webPages/usercenter/MyIntro.jsp\" style=\"padding: 0 50px;\"> <img src=\"image/header/u198.png\" class=\"person\">\n");
-				out.println("</a>\n");
-				out.println("<div style=\"position: absolute; left: 20px; line-height: 0px;\">\n");
-				out.println("<div style=\"line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/usercenter/MyIntro.jsp\">"+ username +"</a>\n");
-				out.println("</div>\n");
-				out.println("<div style=\"line-height: 13px;\">&nbsp;/&nbsp;</div>\n");
-				out.println("<div style=\"text-align: left; line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/jiedu/login.jsp\">退出</a>\n");
-				out.println("</div>\n");
-				out.println("</div>\n");
-			}
-		
-		%>
-		<!-- 
-			<a href="webPages/jiedu/login.jsp" style="padding: 0 50px;"> <img
-				src="image/header/u198.png" class="person">
-			</a>
-			<div style="position: absolute; left: 20px; line-height: 0px;">
-				<div style="line-height: 13px;">
-					<a href="webPages/jiedu/login.jsp">登录</a>
-				</div>
-				<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
-				<div style="text-align: left; line-height: 13px;">
-					<a href="webPages/jiedu/register.jsp">注册</a>
+			<div class="user_content">
+				<a style="padding: 0 50px;"> <img alt=""
+					src="image/header/u198.png" class="person">
+				</a>
+				<div style="position: absolute; left: 20px; line-height: 0px;">
+					<div style="line-height: 13px;">
+				<a href="webPages/jiedu/login.jsp">登录</a>
+							</div>
+							<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
+							<div style="text-align: left; line-height: 13px;">
+								<a href="webPages/jiedu/register.jsp">注册</a>
+					</div>
 				</div>
 			</div>
-		-->
 		</div>
-	</div>
 	</div>
 
 </body>
@@ -141,85 +105,87 @@ body {
 			</form>
 			<button class="consultation" onclick="userNotnull();">我要咨询</button>
 		</div>
+		<form  id="submitForm" action="listConsByCate" method="post">
 		<div class="choice" style="height: 40px;">
 			<ul>
+				<li><label><input id = "zhidao" type="checkbox" class="option" name = "zhidao"
+						 value="040001">发票系统故障及操作指导</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040001">发票系统故障及操作指导</label></li>
+				<li><label><input id = "linggou" type="checkbox" class="option" name = "linggou"
+						 value="040002">发票领购</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040002">发票领购</label></li>
+				<li><label><input type="checkbox" class="option" name = "daikai"
+						 value="040003">发票代开</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040003">发票代开</label></li>
+				<li><label><input type="checkbox" class="option"	name = "kaiju"
+						 value="040004">发票开具</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040004">发票开具</label></li>
+				<li><label><input type="checkbox" class="option"	name = "hongzi"
+						 value="040005">红字增值税发票开具</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040005">红字增值税发票开具</label></li>
+				<li><label><input type="checkbox" class="option"	name = "zuofei"
+						 value="040006">申报有误能否作废</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040006">申报有误能否作废</label></li>
+				<li><label><input type="checkbox" class="option"	name = "zige"
+						 value="040007">一般纳税人资格</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040007">一般纳税人资格</label></li>
+				<li><label><input type="checkbox" class="option"	name = "fudao"
+						 value="040008">辅导期一般纳税人</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040008">辅导期一般纳税人</label></li>
+				<li><label><input type="checkbox" class="option"	name = "dikou"
+						 value="040009">专用发票认证抵扣</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040009">专用发票认证抵扣</label></li>
-
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040010">小规模纳税人增值税起征点是否有调整</label>
+				<li><label><input type="checkbox" class="option"	name = "tiaozheng"
+						 value="040010">小规模纳税人增值税起征点是否有调整</label>
 				</li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040011">认定为一般纳税人之后是否可以转为小规模纳税人</label>
+				<li><label><input type="checkbox" class="option"	name = "rending"
+						 value="040011">认定为一般纳税人之后是否可以转为小规模纳税人</label>
 				</li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040012">小规模纳税人自行开具的增值税专用发票如何填写申报表</label>
+				<li><label><input type="checkbox" class="option"	name = "baobiao"
+						 value="040012">小规模纳税人自行开具的增值税专用发票如何填写申报表</label>
 				</li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040013">注销登记</label></li>
+				<li><label><input type="checkbox" class="option"	name = "zhuxiao"
+						 value="040013">注销登记</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040014">发票检查</label></li>
+				<li><label><input type="checkbox" class="option"	name = "jiancha"
+						 value="040014">发票检查</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040015">专用发票丢失</label></li>
+				<li><label><input type="checkbox" class="option"	name = "diushi"
+						 value="040015">专用发票丢失</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040016">征收率</label></li>
+				<li><label><input type="checkbox" class="option"	name = "zhengshoulv"
+						 value="040016">征收率</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040017">非国税业务</label></li>
+				<li><label><input type="checkbox" class="option"	name = "yewu"
+						 value="040017">非国税业务</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040018">信用等级</label></li>
+				<li><label><input type="checkbox" class="option"	name = "dengji"
+						 value="040018">信用等级</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040019">营改增</label></li>
+				<li><label><input type="checkbox" class="option"	name = "yinggaizeng"
+						 value="040019">营改增</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040020">金税管理</label></li>
+				<li><label><input type="checkbox" class="option"	name = "jinshui"
+						 value="040020">金税管理</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040021">进出口税收</label></li>
+				<li><label><input type="checkbox" class="option"	name = "jinchukou"
+						 value="040021">进出口税收</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040022">征收管理</label></li>
+				<li><label><input type="checkbox" class="option"	name = "zhengshou"
+						 value="040022">征收管理</label></li>
 
-				<li><label><input type="checkbox" class="option"
-						onchange="content_change( );" value="040023">发票保管</label></li>
+				<li><label><input type="checkbox" class="option"	name = "baoguan"
+						 value="040023">发票保管</label></li>
 
 			</ul>
 			<div class="choice_open"></div>
 			<div class="choice_close"></div>
 		</div>
+				<button id="submit_btn" type="submit">提交</button>
+		</form>
 		<!-- 选择类型 -->
 	</div>
 	<div class="center">
@@ -242,9 +208,10 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购
 							</span></li>
 							<li><span>未采纳</span></li>
-							 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513737987706" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
+								<input class="star" type="button" value="收藏" > </li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -258,9 +225,10 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购
 							</span></li>
 							<li><span>未采纳</span></li>
-							 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513740963289" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
+                                    <input class="star" type="button" value="收藏" > </li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -274,9 +242,10 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导
 							</span></li>
 							<li><span>未采纳</span></li>
-                                        <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513754664159" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
+                                        <input class="star" type="button" value="收藏" > </li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -290,9 +259,10 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购,发票开具,红字增值税发票开具
 							</span></li>
 							<li><span>未采纳</span></li>
-							 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513613216919" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
+                                            <input class="star" type="button" value="收藏" > </li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -306,9 +276,9 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,红字增值税发票开具
 							</span></li>
 							<li><span>未采纳</span></li>
-							 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513392823785" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -322,9 +292,9 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,红字增值税发票开具
 							</span></li>
 							<li><span>未采纳</span></li>
-							 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513393101988" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -338,9 +308,9 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,小规模纳税人增值税起征点是否有调整
 							</span></li>
 							<li><span>未采纳</span></li>
-							 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513330800076" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -353,9 +323,9 @@ body {
 							<li><span>回答：</span><span>1 </span></li>
 							<li style="width: 300px;"><span>分类：</span><span> </span></li>
 							<li><span>未采纳</span></li>
-						 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513225973125" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -369,9 +339,9 @@ body {
 							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购
 							</span></li>
 							<li><span>未采纳</span></li>
-						 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513229403369" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
 						</ul>
 
 						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
@@ -384,9 +354,9 @@ body {
 							<li><span>回答：</span><span>1 </span></li>
 							<li style="width: 300px;"><span>分类：</span><span> </span></li>
 							<li><span>未采纳</span></li>
-						 <li	onClick="star(this)" style="width: 50px; float: right; font-size: 14px;float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
+							<li data-target-id="ques_1513229523566" data-target="question"
+								onclick="starQuestion();"
+								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
 						</ul>
 
 					</div>
@@ -410,62 +380,7 @@ body {
 		$('.choice_open').css('display','block');
 		$('.choice_close').css('display','none');
 	})
-	var i=0;
-function star(obj){
-	var x=<%=hasLogined%>;
-	if(x==false){
-	$(".mask").css("opacity","0.3").show(); 
-		//制作对话框 
-	showDialog(); 
-		//展现css的特效 
-	$(".dialog").show(); 
-			}
-     else{
-     i=i+1;
-       if(i%2!=0){
-	     $(obj).find('.star').css("display","none");
-	     $(obj).find('.has_star').css("display","block");
-     }
-       else{
-    	 $(obj).find('.has_star').css("display","none");
-    	 $(obj).find('.star').css("display","block");
-     };
-    }
-}; 
 
-function showDialog(){ 
-				var objw=$(window);//获取当前窗口 
-				var objc=$(".dialog");//获取当前对话框 
-				var brsw=objw.width(); //获取页面宽度 
-				var brsh=objw.height(); //获取页面高度 
-				var sclL=objw.scrollLeft(); //获取页面左滑动条信息 
-				var sclT=objw.scrollTop(); 
-				var curw=objc.width(); //获取对话框宽度 
-				var curh=objc.height(); //获取对话框高度 
-				  
-				var left=sclL+(brsw -curw)/2; //计算对话框居中时的左边距 
-				var top=sclT+(brsh-curh)/2; //计算对话框居中时的上边距 
-				  
-				  
-				objc.css({"left":left,"top":top}); //设置对话框居中 
-			}
-$(".title img").click(function(){ 
-	//隐藏效果 
-	$(".dialog").hide(); 
-	$(".mask").hide(); 
-	  
-	}); 
-	//取消按钮事件 
-	$("#noOk").click(function(){ 
-	$(".dialog").hide(); 
-	$(".mask").hide(); 
-	}); 
-	  
-	//确定按钮事假 
-	$("#ok").click(function(){ 
-	$(".dialog").hide(); 
-	$(".mask").hide(); 
-	});
 	
 	</script>
 
