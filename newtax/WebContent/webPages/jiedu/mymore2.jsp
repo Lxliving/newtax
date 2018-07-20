@@ -21,7 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 li {
 	list-style: none;
 }
-
+#tab_li_1,#tab_li_2,#tab_li_3,#tab_li_4{
+	width:299px;
+}
 body {
 	min-height: 760px;
 	background: #eee;
@@ -66,11 +68,11 @@ body {
 	<div style="margin:10px;margin-top:10px;color:black;">
 	<span class="">当前位置：<a style="color:black" href="webPages/usercenter/MyIntro.jsp" class="nav_style">个人中心</a></span>
 	<span class="">&nbsp;&gt;&nbsp;</span>
-	<span class=""><a href="" style="color:black"> 提问</a></span>
+	<span class=""><a href="" style="color:black">回答</a></span>
 	</div>
 		<div class="tab_1">
 			<ul>
-				<li class="myQ">我的提问</li>
+				<li class="myQ">我的回答</li>
 			</ul>
 		</div>
 	<div class="tab_box">
@@ -78,11 +80,10 @@ body {
 			<div class="tab_a" id="tab_b" style="height: 1100px;">
 			    <div class="center_listButton">
 				<ul class="tabOne tabOneys" id="tabOne">
-				 <li class="curr" id="tab_li_1" onclick="choose1()"><a>全部</a></li>
+				 <li width:400px class="curr" id="tab_li_1" onclick="choose1()"><a>全部</a></li>
                  <li class="" id="tab_li_2" onclick="choose2()"><a>审核待处理</a></li>
-				 <li id="tab_li_3" onclick="choose3()"><a>待解答</a></li>
-				 <li id="tab_li_4" onclick="choose4()"><a>已解答</a></li>
-				 <li id="tab_li_5" onclick="choose5()"><a>审核未通过</a></li>
+				 <li id="tab_li_3" onclick="choose3()"><a>审核通过</a></li>
+				 <li id="tab_li_4" onclick="choose4()"><a>审核未通过</a></li>
 				</ul>
 			</div>
 		<div class="tab_con">
@@ -91,55 +92,32 @@ body {
 				<div class="quesContent">
 				<ul style="border-bottom:1px dotted #ccc;height: 130px;">
 					<li><img src="image/headport.png" alt="Avatar" style="width:55px;height:90%;vertical-align:middle;">
-						<span>&nbsp;标题：我要分享</span></li>
-						<li><span>已解答</span></li>
-						<li><span>2017-12-16</span></li><li><a href=""><span>内容：</span><span><p>我要分享</p></span></a></li>
-						 <li><span>浏览：</span><span>34</span></li><li><span>收藏：</span><span>0</span></li>
-						<li><span>回答：</span><span>1</span></li><li><span>分类：</span><span>普通提问</span></li>
+						<span>&nbsp;标题：所得税征收</span></li>
+						<li><span>审核通过</span></li>
+						<li><span>2018-12-19</span></li><li><a href=""><span>内容：</span><span><p>xxxxx</p></span></a></li>
+						 <li><span>浏览：</span><span>0</span></li><li><span>点赞：</span><span>0</span></li>
 			    </ul>	
-			    <ul style="border-bottom:1px dotted #ccc;height: 130px;">		
-					<li><img src="image/headport.png" alt="Avatar" style="width:55px;height:90%;vertical-align:middle;">
-						<span>&nbsp;标题：个人所得税？</span></li>
-						<li><span>已解答</span></li>
-						<li><span>2017-12-14</span></li><li><a href=""><span>内容：</span><span><p>所得税的征收</p></span></a></li>
-						 <li><span>浏览：</span><span>118</span></li><li><span>收藏：</span><span>2</span></li>
-						<li><span>回答：</span><span>4</span></li><li><span>分类：</span><span>普通提问</span></li>	
-						</ul></div>
-						</div>
+			    </div></div>
 			<!-- 全部 end -->
-			<!-- 等待处理 start -->
-			<div id="tab_li2" style="display: none;">
+			<!-- 审核待处理 start -->
+				<div id="tab_li2" style="display: none;">
 				<div class="quesContent"></div>
 				</div>
-			<!-- 等待处理 end -->
-			<!-- 等待解答 start -->
-			<div id="tab_li3" style="display: none;">
-				<div class="quesContent"></div>
-				</div>
-			<!-- 等待解答 end -->
-			<!-- 已解答 start -->
-			<div id="tab_li4" style="display: none;">
+			<!-- 审核待处理 end -->
+			<!-- 审核通过 start -->
+			<div id="tab_li3" style="display:none;">
 				<div class="quesContent">
 				<ul style="border-bottom:1px dotted #ccc;height: 130px;">
 					<li><img src="image/headport.png" alt="Avatar" style="width:55px;height:90%;vertical-align:middle;">
-						<span>&nbsp;标题：我要分享</span></li>
-						<li><span>已解答</span></li>
-						<li><span>2017-12-16</span></li><li><a href=""><span>内容：</span><span><p>我要分享</p></span></a></li>
-						 <li><span>浏览：</span><span>34</span></li><li><span>收藏：</span><span>0</span></li>
-						<li><span>回答：</span><span>1</span></li><li><span>分类：</span><span>普通提问</span></li>
+						<span>&nbsp;标题：所得税征收</span></li>
+						<li><span>审核待处理</span></li>
+						<li><span>2018-12-19</span></li><li><a href=""><span>内容：</span><span><p>xxxxx</p></span></a></li>
+						 <li><span>浏览：</span><span>0</span></li><li><span>点赞：</span><span>0</span></li>
 			    </ul>	
-			    <ul style="border-bottom:1px dotted #ccc;height: 130px;">		
-					<li><img src="image/headport.png" alt="Avatar" style="width:55px;height:90%;vertical-align:middle;">
-						<span>&nbsp;标题：个人所得税？</span></li>
-						<li><span>已解答</span></li>
-						<li><span>2017-12-14</span></li><li><a href=""><span>内容：</span><span><p>所得税的征收</p></span></a></li>
-						 <li><span>浏览：</span><span>118</span></li><li><span>收藏：</span><span>2</span></li>
-						<li><span>回答：</span><span>4</span></li><li><span>分类：</span><span>普通提问</span></li>	
-						</ul></div>
-						</div>
-			<!-- 已解答 end -->
+			    </div></div>
+			<!-- 审核通过 end -->
 			<!-- 审核未通过 start -->
-			<div id="tab_li5" style="display: none;">
+			<div id="tab_li3" style="display: none;">
 				<div class="quesContent"></div>
 				</div>
 			<!-- 审核未通过 end -->
@@ -277,36 +255,26 @@ body {
         	document.getElementById("tab_li2").style.display="none";
         	document.getElementById("tab_li3").style.display="none";
         	document.getElementById("tab_li4").style.display="none";
-        	document.getElementById("tab_li5").style.display="none";
         	}
         	function choose2(){
             	document.getElementById("tab_li1").style.display="none";
             	document.getElementById("tab_li2").style.display="block";
             	document.getElementById("tab_li3").style.display="none";
             	document.getElementById("tab_li4").style.display="none";
-            	document.getElementById("tab_li5").style.display="none";
             	}
         	function choose3(){
             	document.getElementById("tab_li1").style.display="none";
             	document.getElementById("tab_li2").style.display="none";
             	document.getElementById("tab_li3").style.display="block";
             	document.getElementById("tab_li4").style.display="none";
-            	document.getElementById("tab_li5").style.display="none";
             	}
         	function choose4(){
             	document.getElementById("tab_li1").style.display="none";
             	document.getElementById("tab_li2").style.display="none";
             	document.getElementById("tab_li3").style.display="none";
             	document.getElementById("tab_li4").style.display="block";
-            	document.getElementById("tab_li5").style.display="none";
             	}
-        	function choose5(){
-            	document.getElementById("tab_li1").style.display="none";
-            	document.getElementById("tab_li2").style.display="none";
-            	document.getElementById("tab_li3").style.display="none";
-            	document.getElementById("tab_li4").style.display="none";
-            	document.getElementById("tab_li5").style.display="block";
-            	}
+        
 			
 		
 	</script>
