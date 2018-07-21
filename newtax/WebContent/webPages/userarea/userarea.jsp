@@ -252,7 +252,14 @@ body {
 				<div class="clearfix"></div>
 				<div class="intro_floor3">
 					<div class="intro_floor3_1">
-						<a  onclick="tips()">发私信</a>
+					<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">发私信</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/sendsixin.jsp\">发私信</a>");
+						}
+					%>
 					</div>
 					<div class="intro_floor3_2">
 						<a  onclick="tips()">邀请回答</a>
@@ -289,7 +296,14 @@ body {
 				<div class="clearfix"></div>
 				<div class="intro_floor3">
 					<div class="intro_floor3_1">
-						<a onclick="tips()">发私信</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">发私信</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/sendsixin.jsp\">发私信</a>");
+						}
+					%>
 					</div>
 					<div class="intro_floor3_2">
 						<a onclick="tips()">邀请回答</a>
@@ -326,7 +340,14 @@ body {
 				<div class="clearfix"></div>
 				<div class="intro_floor3">
 					<div class="intro_floor3_1">
-						<a onclick="tips()">发私信</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">发私信</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/sendsixin.jsp\">发私信</a>");
+						}
+					%>
 					</div>
 					<div class="intro_floor3_2">
 						<a  onclick="tips()">邀请回答</a>
@@ -368,7 +389,14 @@ body {
 				<div class="clearfix"></div>
 				<div class="intro_floor3">
 					<div class="intro_floor3_1">
-						<a onclick="tips()">发私信</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">发私信</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/sendsixin.jsp\">发私信</a>");
+						}
+					%>
 					</div>
 					<div class="intro_floor3_2">
 						<a onclick="tips()">邀请回答</a>
@@ -405,7 +433,14 @@ body {
 				<div class="clearfix"></div>
 				<div class="intro_floor3">
 					<div class="intro_floor3_1">
-						<a onclick="tips()">发私信</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">发私信</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/sendsixin.jsp\">发私信</a>");
+						}
+					%>
 					</div>
 					<div class="intro_floor3_2">
 						<a onclick="tips()">邀请回答</a>
@@ -442,7 +477,14 @@ body {
 				<div class="clearfix"></div>
 				<div class="intro_floor3">
 					<div class="intro_floor3_1">
-						<a onclick="tips()">发私信</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">发私信</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/sendsixin.jsp\">发私信</a>");
+						}
+					%>
 					</div>
 					<div class="intro_floor3_2">
 						<a onclick="tips()">邀请回答</a>

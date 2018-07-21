@@ -1025,3 +1025,23 @@ button{
 }
 
 /*--//绗簲鏍忥紝绛旈鍔ㄦ��--*/
+
+/*--发送私信页面--*/
+.sixincontent{
+	width:62%;
+	margin:0 auto;
+}
+.div_button{
+	text-align:center;
+}
+.sixin_button{
+	 background-color:#1B55A9;
+	 width:100px;
+	 height: 35px;
+	 border: none;
+	 color: white;
+	 font-size: 15px;
+	 cursor: pointer;
+	 margin-top:4%;
+}
+/*--//发送私信页面--*/

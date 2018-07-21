@@ -6,6 +6,7 @@
 display：none表示影藏 
 z-index：//保证该层在最上面显示 
 */ 
+top:180px;
 width: 339px; 
 	height: 318px;
 border: 10px #fff solid; 
