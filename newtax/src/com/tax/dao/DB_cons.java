@@ -121,6 +121,7 @@ public class DB_cons {
 				cons.setSeenNum(res.getInt("seenNum"));
 				cons.setAnsNum(res.getInt("ansNum"));
 				cons.setKeptNum(res.getInt("keptNum"));
+                cons.setDate(res.getDate("date"));
 //				cons.setCategory(dca.getCate(cons.getConsID()));
 				arrCons.add(cons);
 			}
