@@ -1,7 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import ="java.util.*,com.tax.controller.*,com.tax.dao.*,com.tax.vo.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String username =(String)request.getSession().getAttribute("username");
+boolean hasLogined = false;
+if(username!=null){
+	hasLogined = true;
+}
+DB_cons cons=new DB_cons();
+ArrayList<consult> arrCons = new ArrayList<consult>();
+
+arrCons =cons.listCons();
+int size=arrCons.size();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -11,16 +22,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>安徽省国家税务局税企互助交流平台</title>
 <link rel="stylesheet" type="text/css" href="css/head.css" />
 <link rel="stylesheet" type="text/css" href="css/paging.css" />
-<link rel="stylesheet" type="text/css" href="css/question.css" />
+<link rel="stylesheet" type="text/css" href="css/find.css" />
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
 <link rel="stylesheet" href="css/ScreenChange.css" />
-<script type="text/javascript" src="js/star.js"></script> 
 <link rel="stylesheet" href="css/tips.css" />
 <style type="text/css">
 body {
 	min-height: 900px;
 	background: rgba(236, 236, 236, 1.00);
 }
+
 </style>
 
 </head>
@@ -184,7 +195,7 @@ body {
 			<div class="choice_open"></div>
 			<div class="choice_close"></div>
 		</div>
-				<button id="submit_btn" type="submit">提交</button>
+				<div style="float:right;margin-right:20px;"><button id="submit_btn" type="submit">提交</button></div>
 		</form>
 		<!-- 选择类型 -->
 	</div>
@@ -196,169 +207,60 @@ body {
 				<div id="zuixinzixun">
 					<!-- <div><p style="width:100px;padding-bottom:5px;text-align:center;height:21px;border-bottom-width:100px;border-bottom:3px solid  #1B55A9;font-size:20px;">最新咨询</p></div> -->
 					<div id="quesContent" class="quesContent">
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513737987706/details">想了解个人所得税流程</a></li>
-							<li><span>2017-12-20</span></li>
-							<li><span>浏览：</span><span>335</span></li>
-							<li><span>收藏：</span><span class="starCount">6</span></li>
-							<li><span>回答：</span><span>9 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513737987706" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
-								<input class="star" type="button" value="收藏" > </li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513740963289/details">电子税务的一些知识</a></li>
-							<li><span>2017-12-20</span></li>
-							<li><span>浏览：</span><span>41</span></li>
-							<li><span>收藏：</span><span class="starCount">1</span></li>
-							<li><span>回答：</span><span>1 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513740963289" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
-                                    <input class="star" type="button" value="收藏" > </li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513754664159/details">咨询税收</a></li>
-							<li><span>2017-12-20</span></li>
-							<li><span>浏览：</span><span>29</span></li>
-							<li><span>收藏：</span><span class="starCount">1</span></li>
-							<li><span>回答：</span><span>3 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513754664159" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
-                                        <input class="star" type="button" value="收藏" > </li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513613216919/details">电子税务的定义</a></li>
-							<li><span>2017-12-19</span></li>
-							<li><span>浏览：</span><span>57</span></li>
-							<li><span>收藏：</span><span class="starCount">2</span></li>
-							<li><span>回答：</span><span>3 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购,发票开具,红字增值税发票开具
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513613216919" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;">
-                                            <input class="star" type="button" value="收藏" > </li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513392823785/details">电子税务局</a></li>
-							<li><span>2017-12-16</span></li>
-							<li><span>浏览：</span><span>258</span></li>
-							<li><span>收藏：</span><span class="starCount">1</span></li>
-							<li><span>回答：</span><span>2 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,红字增值税发票开具
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513392823785" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513393101988/details">我要分享</a></li>
-							<li><span>2017-12-16</span></li>
-							<li><span>浏览：</span><span>33</span></li>
-							<li><span>收藏：</span><span class="starCount">0</span></li>
-							<li><span>回答：</span><span>1 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,红字增值税发票开具
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513393101988" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513330800076/details">这是一个简单的测试提问？</a></li>
-							<li><span>2017-12-15</span></li>
-							<li><span>浏览：</span><span>22</span></li>
-							<li><span>收藏：</span><span class="starCount">1</span></li>
-							<li><span>回答：</span><span>0 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,小规模纳税人增值税起征点是否有调整
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513330800076" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513225973125/details">车船税的征收？</a></li>
-							<li><span>2017-12-14</span></li>
-							<li><span>浏览：</span><span>29</span></li>
-							<li><span>收藏：</span><span class="starCount">2</span></li>
-							<li><span>回答：</span><span>1 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span> </span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513225973125" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513229403369/details">作为承租方租用房屋需要缴纳哪些税？</a></li>
-							<li><span>2017-12-14</span></li>
-							<li><span>浏览：</span><span>39</span></li>
-							<li><span>收藏：</span><span class="starCount">2</span></li>
-							<li><span>回答：</span><span>1 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span>发票系统故障及操作指导,发票领购
-							</span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513229403369" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
-						</ul>
-
-						<ul style="border-bottom: 1px dashed #ccc; height: 70px;">
-							<li><a
-								style="border: none; font-size: 16px; cursor: pointer;"
-								href="/lagsms/questions/ques_1513229523566/details">印花税</a></li>
-							<li><span>2017-12-14</span></li>
-							<li><span>浏览：</span><span>5</span></li>
-							<li><span>收藏：</span><span class="starCount">1</span></li>
-							<li><span>回答：</span><span>1 </span></li>
-							<li style="width: 300px;"><span>分类：</span><span> </span></li>
-							<li><span>未采纳</span></li>
-							<li data-target-id="ques_1513229523566" data-target="question"
-								onclick="starQuestion();"
-								style="width: 50px; float: right; font-size: 14px; cursor: pointer;"> <input class="star" type="button" value="收藏" ></li>
-						</ul>
-
+                         <%
+			Date ConsDate;
+			String ConsName;
+			int SeenNum;
+			String ConsDetail;
+			int KeptNum;
+			int AnsNum;
+			ArrayList<String> Category;
+		   String cate="";
+			 for(int i=0;i<size;i++){
+				 ConsDate =arrCons.get(i).getDate();
+				 ConsName =arrCons.get(i).getConsName();
+				 SeenNum=arrCons.get(i).getSeenNum();
+				 ConsDetail =arrCons.get(i).getConsDetail();
+				 KeptNum =arrCons.get(i).getKeptNum();
+				 AnsNum=arrCons.get(i).getAnsNum();
+				 Category=arrCons.get(i).getCategory();
+				 for(int j=0;j<Category.size();j++){
+				 cate=Category.get(j)+","+cate;
+				 }
+				 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
+				 out.println("<li>\n");
+				 out.println("<a style=\"border: none; font-size: 16px; cursor: pointer;\" href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</a>\n");
+				 out.println("</li>\n");
+				 out.println("<li  >\n");
+				 out.println("<span>"+ConsDate+"</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>浏览：</span>\n");
+				 out.println("<span>"+SeenNum+"</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>回答：</span>\n");
+				 out.println("<span>"+AnsNum+"</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>收藏：</span>\n");
+				 out.println("<span>"+KeptNum+"</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>分类：</span>\n");
+				 out.println("<span>"+cate+"</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>未采纳</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li	onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
+				 out.println("<span class=\"star\"  >收藏</span>\n");
+				 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
+				 out.println("</ul>");		
+			 }			
+			 cate="";
+			%>
+						
 					</div>
 					<div id="searchQuesPage" class="box"></div>
 				</div>
@@ -380,8 +282,62 @@ body {
 		$('.choice_open').css('display','block');
 		$('.choice_close').css('display','none');
 	})
+    
+ function star(obj){
+	var x=<%=hasLogined%>;
+	if(x==false){
+	$(".mask").css("opacity","0.3").show(); 
+		//制作对话框 
+	showDialog(); 
+		//展现css的特效 
+	$(".dialog").show(); 
+			}
+     else{
+     i=i+1;
+       if(i%2!=0){
+	     $(obj).find('.star').css("display","none");
+	     $(obj).find('.has_star').css("display","block");
+     }
+       else{
+    	 $(obj).find('.has_star').css("display","none");
+    	 $(obj).find('.star').css("display","block");
+     };
+    }
+}; 
 
-	
+function showDialog(){ 
+				var objw=$(window);//获取当前窗口 
+				var objc=$(".dialog");//获取当前对话框 
+				var brsw=objw.width(); //获取页面宽度 
+				var brsh=objw.height(); //获取页面高度 
+				var sclL=objw.scrollLeft(); //获取页面左滑动条信息 
+				var sclT=objw.scrollTop(); 
+				var curw=objc.width(); //获取对话框宽度 
+				var curh=objc.height(); //获取对话框高度 
+				  
+				var left=sclL+(brsw -curw)/2; //计算对话框居中时的左边距 
+				var top=sclT+(brsh-curh)/2; //计算对话框居中时的上边距 
+				  
+				  
+				objc.css({"left":left,"top":top}); //设置对话框居中 
+			}
+$(".title img").click(function(){ 
+	//隐藏效果 
+	$(".dialog").hide(); 
+	$(".mask").hide(); 
+	  
+	}); 
+	//取消按钮事件 
+	$("#noOk").click(function(){ 
+	$(".dialog").hide(); 
+	$(".mask").hide(); 
+	}); 
+	  
+	//确定按钮事假 
+	$("#ok").click(function(){ 
+	$(".dialog").hide(); 
+	$(".mask").hide(); 
+	});
 	</script>
 
 <head>

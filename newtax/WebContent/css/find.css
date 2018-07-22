@@ -50,6 +50,20 @@ button{
 	width:1200px;
 	margin:25px auto;
 	}
+ #submit_btn {
+    width: 30px;
+    height: 20px;
+    color: #fff;
+    background: rgb(27,85,169);
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 2px;
+    
+} 
 .dynamictext{height:45px;}
 .dynamictext_list{height:45px;overflow:hidden;}
 .maquee ul li{
@@ -123,15 +137,14 @@ button{
 	outline:none;
 }
 .choice{
-	width:1200px;
+	width:1140px;
 	height:150px;
 	overflow:hidden;
-	margin:0 auto;
 	position: relative;
 }
 .choice ul li{
 	float:left;
-	width:200px;
+	width:190px;
 	height:40px;
 	line-height:40px;
 	text-align:left;
@@ -168,9 +181,16 @@ button{
 	background:url(../image/home/down.png)no-repeat;
 	
 }
-/* 中间部分end */
+.sure{
+float: right;
+    width: 33px;
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 20px;
+   }
 
-/* 分页 start */
+  
+  
 .center_last{
 	width: 100%;
 	height: auto;

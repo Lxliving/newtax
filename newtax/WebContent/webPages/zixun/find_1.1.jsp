@@ -118,7 +118,7 @@ body {
 			</form>
 			<button class="consultation" onclick="userNotnull();">我要咨询</button>
 		</div>
-		<form  id="submitForm" action="listConsByCate" method="post" style="visiable:false">
+				<form  id="submitForm" action="listConsByCate" method="post">
 		<div class="choice" style="height: 40px;">
 			<ul>
 				<li><label><input id = "zhidao" type="checkbox" class="option" name = "zhidao"
@@ -197,7 +197,7 @@ body {
 			<div class="choice_open"></div>
 			<div class="choice_close"></div>
 		</div>
-				<button id="submit_btn" type="submit">提交</button>
+				<div style="float:right;margin-right:20px;"><button id="submit_btn" type="submit">提交</button></div>
 		</form>
 		<!-- 选择类型 -->
 	</div>
