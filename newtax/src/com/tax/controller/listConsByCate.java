@@ -3,6 +3,7 @@ package com.tax.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -99,8 +100,8 @@ public class listConsByCate extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("arraylist", arr);
 		System.out.println("全部输出到arraylist里边去了");
-//		RequestDispatcher requestDispatcher=request.getRequestDispatcher("http://www.baidu.com");
-//		requestDispatcher.forward(request, response);
+		RequestDispatcher requestDispatcher=request.getRequestDispatcher("webPages/zixun/find_1.1.jsp");
+		requestDispatcher.forward(request, response);
 	}
 	public void init() throws ServletException{
 		System.out.println("listConsByCate initing");
