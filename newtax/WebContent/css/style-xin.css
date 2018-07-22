@@ -1045,3 +1045,102 @@ button{
 	 margin-top:4%;
 }
 /*--//发送私信页面--*/
+
+/*--邀请回答界面--*/
+.path_nav_inv_ans{
+	height:35px;
+	width:85%;
+	margin:1% 10% 3.5% 12.5%;
+}
+.inv_ans_content{
+	margin:0 auto;
+	width:69%;
+}
+.tiwen_type{
+	width:100%;
+}
+.wenti_fenlei{
+	float:left;
+	width:50%;
+	margin-left:1%;
+}
+.wenti_fenlei p{
+	font-size:1.1em;
+	float:left;
+}
+.wenti_fenlei select{
+	float:left;
+	width:260px;
+	height:33px;
+	margin-left:1.5%;
+	border-radius:5px;
+	text-align: center;
+    text-align-last: center;
+}
+.xuanshang_fenlei{
+	float:left;
+	width:40%;
+	margin-left:2.5%;
+}
+.xuanshang_fenlei p{
+	font-size:1.1em;
+	float:left;
+}
+.xuanshang_fenlei select{
+	float:left;
+	width:260px;
+	height:33px;
+	margin-left:3.5%;
+	border-radius:5px;
+	text-align: center;
+    text-align-last: center;
+}
+.tiwen_title{
+	width:100%;
+	margin:2.5% 0;
+}
+.tiwen_title p{
+	font-size:1.1em;
+	float:left;
+	margin-left:1%;
+}
+.tiwen_title input{
+	width:663px;
+	height:34px;
+	margin-left:5px;
+	border-radius:5px;
+	border: 1px solid #a9a9a9;
+	outline:none;
+}
+.tiwen_content{
+	width:100%;
+	margin:2.5% 0 0.5%;
+}
+.tiwen_content p{
+	font-size:1.1em;
+	float:left;
+	margin-left:1%;
+}
+.tiwen_content textarea{
+	width:663px;
+	height:250px;
+	margin-left:5px;
+	border-radius:5px;
+	resize:none;
+}
+.div_inv_ans_button{
+	width:90%;
+	float:right;
+	text-align:center;
+}
+.inv_ans_button{
+	 background-color:#1B55A9;
+	 width:80px;
+	 height: 35px;
+	 border: none;
+	 color: white;
+	 font-size: 15px;
+	 cursor: pointer;
+	 margin-top:4%;
+}
+/*--//邀请回答界面--*/
