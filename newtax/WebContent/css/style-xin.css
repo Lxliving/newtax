@@ -1144,3 +1144,65 @@ button{
 	 margin-top:4%;
 }
 /*--//邀请回答界面--*/
+/*--我要分享post_share界面--*/
+.path_nav_post_share{
+	height:35px;
+	width:85%;
+	margin:1.7% 2% 1% 0;
+}
+.post_share_content{
+	margin:0 auto;
+	width:87%;
+
+}
+.post_share_content_p1{
+	font-size:1.1em;
+	color:#333333;
+}
+.post_share_form{
+	margin:0 auto;
+	width:74%;
+}
+.post_share_fenlei{
+	float:left;
+	width:100%;
+}
+.post_share_fenlei p{
+	float:left;
+}
+.post_share_fenlei select{
+	float:left;
+	width:200px;
+	height:34px;
+	border-radius:5px;
+}
+.post_share_title{
+	width:100%;
+	margin:5% 0 2.5%;
+}
+.post_share_title p{
+	float:left;
+}
+.post_share_title input{
+	width:620px;
+	height:25px;
+	border-radius:5px;
+	border: 1px solid #a9a9a9;
+	outline:none;
+}
+.post_share_button{
+	background-color:#1B55A9;
+	width:140px;
+	height: 45px;
+	border: none;
+	color: white;
+	font-size: 20px;
+	cursor: pointer;
+	float:right;
+	margin-top:2%;
+	margin-right:9%;
+}
+.nav_style:hover{
+	color:black;
+}
+/*--//我要分享post_share界面--*/
