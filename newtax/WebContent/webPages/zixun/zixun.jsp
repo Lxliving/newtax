@@ -16,14 +16,7 @@ ArrayList<consult> arrCons = new ArrayList<consult>();
 
 arrCons =cons.listCons();
 int size=arrCons.size();
-System.out.println(arrCons.get(0).getConsID());
-int ConsId =arrCons.get(0).getConsID();
-System.out.println(arrCons.get(0).getDate());
-System.out.println(arrCons.get(0).getConsDetail());
-System.out.println(arrCons.get(0).getConsName());
-System.out.println(arrCons.get(0).getSeenNum());
-System.out.println(arrCons.get(0).getKeptNum());
-System.out.println(arrCons.get(0).getAnsNum());
+
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -86,53 +79,21 @@ System.out.println(arrCons.get(0).getAnsNum());
 			</ul>
 		</div>
 		<div class="user">
-		<div class="user_content">
-
-		<%
-			if (username == null){
-				out.println("<a href=\"webPages/jiedu/login.jsp\" style=\"padding: 0 50px;\"> <img src=\"image/header/u198.png\" class=\"person\">\n");
-				out.println("</a>\n");
-				out.println("<div style=\"position: absolute; left: 20px; line-height: 0px;\">\n");
-				out.println("<div style=\"line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/jiedu/login.jsp\">登录</a>\n");
-				out.println("</div>\n");
-				out.println("<div style=\"line-height: 13px;\">&nbsp;/&nbsp;</div>\n");
-				out.println("<div style=\"text-align: left; line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/jiedu/register.jsp\">注册</a>\n");
-				out.println("</div>\n");
-				out.println("</div>\n");
-			}
-			else{
-				out.println("<a href=\"webPages/usercenter/MyIntro.jsp\" style=\"padding: 0 50px;\"> <img src=\"image/header/u198.png\" class=\"person\">\n");
-				out.println("</a>\n");
-				out.println("<div style=\"position: absolute; left: 20px; line-height: 0px;\">\n");
-				out.println("<div style=\"line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/usercenter/MyIntro.jsp\">"+ username +"</a>\n");
-				out.println("</div>\n");
-				out.println("<div style=\"line-height: 13px;\">&nbsp;/&nbsp;</div>\n");
-				out.println("<div style=\"text-align: left; line-height: 13px;\">\n");
-				out.println("<a href=\"webPages/jiedu/login.jsp\">退出</a>\n");
-				out.println("</div>\n");
-				out.println("</div>\n");
-			}
-		
-		%>
-		<!-- 
-			<a href="webPages/jiedu/login.jsp" style="padding: 0 50px;"> <img
-				src="image/header/u198.png" class="person">
-			</a>
-			<div style="position: absolute; left: 20px; line-height: 0px;">
-				<div style="line-height: 13px;">
-					<a href="webPages/jiedu/login.jsp">登录</a>
-				</div>
-				<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
-				<div style="text-align: left; line-height: 13px;">
-					<a href="webPages/jiedu/register.jsp">注册</a>
-				</div>
+			<div class="user_content">	
+						<a style="padding: 0 50px;">
+							<img alt="" src="image/header/u198.png" class="person">
+						</a>
+						<div style="position: absolute; left: 20px; line-height: 0px;">
+							<div style="line-height: 13px;">
+								<a href="webPages/jiedu/login.jsp">登录</a>
+							</div>
+							<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
+							<div style="text-align: left; line-height: 13px;">
+								<a href="webPages/jiedu/register.jsp">注册</a>
+							</div>
+						</div>				
 			</div>
-		-->
 		</div>
-	</div>
 	</div>
 	
 </body>
@@ -285,85 +246,60 @@ System.out.println(arrCons.get(0).getAnsNum());
 					    			<div class="gary">
 									<div class="pink"></div>
 								</div>
-									<ul style="border-bottom:1px dashed #ccc;height: 70px;">
-										<li>
-											<a href="webPages/zixun/question_model.jsp"> 想了解个人所得税流程</a>
-										</li>
-										<li>
-											<span>2017-12-20</span>
-										</li>
-										<li>
-											<span>浏览：</span>
-											<span>273</span>
-										</li>
-										<li>
-											<span>回答：</span>
-											<span>5</span>
-										</li>
-										<li style="width:110px;">
-											<span>收藏：</span>
-											<span class="starCount">4</span>
-										</li>
-										<li>
-											<span>分类：</span>
-											<span>发票系统故障及操作指导,发票领购</span>
-										</li>
-										<li	onClick="star(this)" style="float:right;cursor:pointer;display:"block"">
-										<span class="star" >收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
-									</ul>
-									<%
-									Date ConsDate;
-									String ConsName;
-									int SeenNum;
-									String ConsDetail;
-									int KeptNum;
-									int AnsNum;
-									ArrayList<String> Category;
-								   String cate="";
-									 for(int i=0;i<size;i++){
-										 ConsDate =arrCons.get(i).getDate();
-										 ConsName =arrCons.get(i).getConsName();
-										 SeenNum=arrCons.get(i).getSeenNum();
-										 ConsDetail =arrCons.get(i).getConsDetail();
-										 KeptNum =arrCons.get(i).getKeptNum();
-										 AnsNum=arrCons.get(i).getAnsNum();
-										 Category=arrCons.get(i).getCategory();
-										 for(int j=0;j<Category.size();j++){
-										 cate=Category.get(j)+","+cate;
-										 }
-										 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
-										 out.println("<li style=\"text-overflow: ellipsis;white-space: nowrap;width: 1000px;  height: 34px;overflow: hidden;\">\n");
-										 out.println("<a style=\" height: 20px;   line-height: 20px;color: black;overflow: hidden;margin: 6px auto;float:left;\" href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</a>\n");
-										 out.println("</li>\n");
-										 out.println("<li style=\" height:35px;width: 160px;float: right; text-align: right;\" >\n");
-										 out.println("<span>"+ConsDate+"</span>\n");
-										 out.println("</li>\n");
-										 out.println("<li style=\"width: 110px; height: 35px;\">\n");
-										 out.println("<span>浏览：</span>\n");
-										 out.println("<span>"+SeenNum+"</span>\n");
-										 out.println("</li>\n");
-										 out.println("<li style=\"width: 110px; height: 35px;\">\n");
-										 out.println("<span>回答：</span>\n");
-										 out.println("<span>"+AnsNum+"</span>\n");
-										 out.println("</li>\n");
-										 out.println("<li style=\"     width: 110px;line-height: 35px;float: left; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;\">\n");
-										 out.println("<span>收藏：</span>\n");
-										 out.println("<span>"+KeptNum+"</span>\n");
-										 out.println("</li>\n");
-										 out.println("<li style=\" width: 500px;height: 35px;text-overflow: ellipsis; white-space: nowrap;overflow: hidden;line-height: 35px; float: left;\">\n");
-										 out.println("<span>分类：</span>\n");
-										 out.println("<span>"+cate+"</span>\n");
-										 out.println("</li>\n");
-										 out.println("<li	onClick=\"star(this)\" style=\"float:right;width:243px; margin-right: 45px;height:30px; line_height:30px;text-overflow: ellipsis; white-space: nowrap;overflow: hidden;cursor:pointer;\">\n");
-										 out.println("<span class=\"star\" style=\"float:right\" >收藏</span>\n");
-										 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
-										 out.println("</ul>");		
-										 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
-									 }			
-									
-									%>
-							</div>
+								<form  id="submitQes" action="" method="post">
+										<%
+										Date ConsDate;
+										String ConsName;
+										int SeenNum;
+										String ConsDetail;
+										int KeptNum;
+										int AnsNum;
+										ArrayList<String> Category;
+									   String cate="";
+										 for(int i=0;i<size;i++){
+											 ConsDate =arrCons.get(i).getDate();
+											 ConsName =arrCons.get(i).getConsName();
+											 SeenNum=arrCons.get(i).getSeenNum();
+											 ConsDetail =arrCons.get(i).getConsDetail();
+											 KeptNum =arrCons.get(i).getKeptNum();
+											 AnsNum=arrCons.get(i).getAnsNum();
+											 Category=arrCons.get(i).getCategory();
+											 for(int j=0;j<Category.size();j++){
+											 cate=Category.get(j)+","+cate;
+											 }
+											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
+											 out.println("<li>\n");
+											 out.println("<a href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</a>\n");
+											 out.println("</li>\n");
+											 out.println("<li  >\n");
+											 out.println("<span>"+ConsDate+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>浏览：</span>\n");
+											 out.println("<span>"+SeenNum+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>回答：</span>\n");
+											 out.println("<span>"+AnsNum+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>收藏：</span>\n");
+											 out.println("<span>"+KeptNum+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>分类：</span>\n");
+											 out.println("<span>"+cate+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li	onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
+											 out.println("<span class=\"star\"  >收藏</span>\n");
+											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
+											 out.println("</ul>");		
+											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+										 }			
+										
+										%>
+										</form>
+			</div>
 							
 								<div id="quesPaging_1" class="box">
 								<button type="button" id="firstPage" class="turnPage first-page">首页</button>
@@ -389,34 +325,59 @@ System.out.println(arrCons.get(0).getAnsNum());
 									<div class="pink"></div>
 								</div>
 				    				
-									<ul style="border-bottom:1px dashed #ccc;height: 70px;">
-										<li>
-											<a href="webPages/zixun/question_model.jsp"> 想了解个人所得税流程</a>
-										</li>
-										<li>
-											<span>2017-12-20</span>
-										</li>
+									<form  id="submitQes" action="" method="post">
+										<%
+										Date ConsDate_2;
+										String ConsName_2;
+										int SeenNum_2;
+										String ConsDetail_2;
+										int KeptNum_2;
+										int AnsNum_2;
+										ArrayList<String> Category_2;
+									   String cate_2="";
+										 for(int i=0;i<size;i++){
+											 ConsDate_2 =arrCons.get(i).getDate();
+											 ConsName_2 =arrCons.get(i).getConsName();
+											 SeenNum_2=arrCons.get(i).getSeenNum();
+											 ConsDetail_2 =arrCons.get(i).getConsDetail();
+											 KeptNum_2 =arrCons.get(i).getKeptNum();
+											 AnsNum_2=arrCons.get(i).getAnsNum();
+											 Category_2=arrCons.get(i).getCategory();
+											 for(int j=0;j<Category_2.size();j++){
+											 cate_2=Category_2.get(j)+","+cate_2;
+											 }
+											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
+											 out.println("<li>\n");
+											 out.println("<a href=\"webPages/zixun/question_model.jsp\">" +ConsName_2+"</a>\n");
+											 out.println("</li>\n");
+											 out.println("<li  >\n");
+											 out.println("<span>"+ConsDate_2+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>浏览：</span>\n");
+											 out.println("<span>"+SeenNum_2+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>回答：</span>\n");
+											 out.println("<span>"+AnsNum_2+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>收藏：</span>\n");
+											 out.println("<span>"+KeptNum_2+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>分类：</span>\n");
+											 out.println("<span>"+cate_2+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li	onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
+											 out.println("<span class=\"star\"  >收藏</span>\n");
+											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
+											 out.println("</ul>");		
+											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+										 }			
 										
-										<li>
-											<span>浏览：</span>
-											<span>310</span>
-										</li>
-										<li>
-											<span>回答：</span>
-											<span>7</span>
-										</li>
-										<li style="width:110px;">
-											<span>收藏：</span>
-											<span class="starCount">6</span>
-										</li>
-										<li>
-											<span>分类：</span>
-											<span>发票系统故障及操作指导,发票领购</span>
-										</li>
-										<li	onClick="star(this)" style="float:right;cursor:pointer;">
-										<span class="star">收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
-									</ul>								
+										%>
+										</form>								
 							</div>
 								<div id="quesPaging_2" class="box_2">
 								<button type="button" id="firstPage_2" class="turnPage first-page_2">首页</button>
@@ -440,40 +401,66 @@ System.out.println(arrCons.get(0).getAnsNum());
 					    			<div class="gary">
 									    <div class="pink"></div>
 								    </div>
-				    				
-									<ul style="border-bottom:1px dashed #ccc;height: 70px;">
-										<li>
-											<a href="webPages/zixun/question_model.jsp"> 电子税务的一些知识</a>
-										</li>
-										<li>
-											<span>2017-12-20</span>
-										</li>
+				    			<form  id="submitQes" action="" method="post">
+										<%
+										Date ConsDate_3;
+										String ConsName_3;
+										int SeenNum_3;
+										String ConsDetail_3;
+										int KeptNum_3;
+										int AnsNum_3;
+										ArrayList<String> Category_3;
+									   String cate_3="";
+										 for(int i=0;i<size;i++){
+											// XuanNum_3=arrConss.get(i).getXuan();
+											 ConsDate_3 =arrCons.get(i).getDate();
+											 ConsName_3 =arrCons.get(i).getConsName();
+											 SeenNum_3=arrCons.get(i).getSeenNum();
+											 ConsDetail_3 =arrCons.get(i).getConsDetail();
+											 KeptNum_3 =arrCons.get(i).getKeptNum();
+											 AnsNum_3=arrCons.get(i).getAnsNum();
+											 Category_3=arrCons.get(i).getCategory();
+											 for(int j=0;j<Category_3.size();j++){
+											 cate_3=Category_3.get(j)+","+cate_2;
+											 }
+											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
+											 out.println("<li>\n");
+											 out.println("<a href=\"webPages/zixun/question_model.jsp\">" +ConsName_3+"</a>\n");
+											 out.println("</li>\n");
+											 out.println("<li  >\n");
+											 out.println("<span>"+ConsDate_3+"</span>\n");
+											 out.println("</li>\n");
+											// out.println("<li>\n");
+											 //out.println("<span>悬赏：</span>\n");
+											//// out.println("<span>"+XuanNum_3+"</span>\n");
+											// out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>浏览：</span>\n");
+											 out.println("<span>"+SeenNum_3+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>回答：</span>\n");
+											 out.println("<span>"+AnsNum_3+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>收藏：</span>\n");
+											 out.println("<span>"+KeptNum_3+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li>\n");
+											 out.println("<span>分类：</span>\n");
+											 out.println("<span>"+cate_3+"</span>\n");
+											 out.println("</li>\n");
+											 out.println("<li	onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
+											 out.println("<span class=\"star\"  >收藏</span>\n");
+											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
+											 out.println("</ul>");		
+											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+										 }			
 										
-											<li>
-												<span>悬赏：</span>
-												<span>3</span>
-											</li>
+										%>
 										
-										<li>
-											<span>浏览：</span>
-											<span>41</span>
-										</li>
-										<li>
-											<span>回答：</span>
-											<span>1</span>
-										</li>
-										<li style="width:110px;">
-											<span>收藏：</span>
-											<span class="starCount">1</span>
-										</li>
-										<li>
-											<span>分类：</span>
-											<span>发票系统故障及操作指导,发票领购</span>
-										</li>
-										<li	onClick="star(this)" style="float:right;cursor:pointer;">
-										<span class="star" style="display: block">收藏</span>
-										<span class="has_star" style="display: none">已收藏</span></li>
-									</ul>								
+										
+										</form>							
 							</div>
 								<div id="quesPaging_3" class="box_3">
 								<button type="button" id="firstPage_3" class="turnPage first-pagev_3">首页</button>
