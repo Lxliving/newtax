@@ -16,8 +16,14 @@ ArrayList<consult> arrCons = new ArrayList<consult>();
 
 arrCons =cons.listCons();
 int size=arrCons.size();
+ArrayList<consult> arrCons_1 = new ArrayList<consult>();
 
+arrCons_1 =cons.listConsByDate();
+int size_1=arrCons_1.size();
+ArrayList<consult> arrCons_3 = new ArrayList<consult>();
 
+arrCons_3 =cons.listConsByXuan();
+int size_3=arrCons_3.size();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -257,13 +263,13 @@ int size=arrCons.size();
 										ArrayList<String> Category;
 									   String cate="";
 										 for(int i=0;i<size;i++){
-											 ConsDate =arrCons.get(i).getDate();
-											 ConsName =arrCons.get(i).getConsName();
-											 SeenNum=arrCons.get(i).getSeenNum();
-											 ConsDetail =arrCons.get(i).getConsDetail();
-											 KeptNum =arrCons.get(i).getKeptNum();
-											 AnsNum=arrCons.get(i).getAnsNum();
-											 Category=arrCons.get(i).getCategory();
+											 ConsDate =arrCons_1.get(i).getDate();
+											 ConsName =arrCons_1.get(i).getConsName();
+											 SeenNum=arrCons_1.get(i).getSeenNum();
+											 ConsDetail =arrCons_1.get(i).getConsDetail();
+											 KeptNum =arrCons_1.get(i).getKeptNum();
+											 AnsNum=arrCons_1.get(i).getAnsNum();
+											 Category=arrCons_1.get(i).getCategory();
 											 for(int j=0;j<Category.size();j++){
 											 cate=Category.get(j)+","+cate;
 											 }
@@ -295,6 +301,7 @@ int size=arrCons.size();
 											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
 											 out.println("</ul>");		
 											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+										cate="";
 										 }			
 										
 										%>
@@ -374,6 +381,7 @@ int size=arrCons.size();
 											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
 											 out.println("</ul>");		
 											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+										cate_2="";
 										 }			
 										
 										%>
@@ -409,17 +417,18 @@ int size=arrCons.size();
 										String ConsDetail_3;
 										int KeptNum_3;
 										int AnsNum_3;
+										int XuanNum_3;
 										ArrayList<String> Category_3;
 									   String cate_3="";
 										 for(int i=0;i<size;i++){
-											// XuanNum_3=arrConss.get(i).getXuan();
-											 ConsDate_3 =arrCons.get(i).getDate();
-											 ConsName_3 =arrCons.get(i).getConsName();
-											 SeenNum_3=arrCons.get(i).getSeenNum();
-											 ConsDetail_3 =arrCons.get(i).getConsDetail();
-											 KeptNum_3 =arrCons.get(i).getKeptNum();
-											 AnsNum_3=arrCons.get(i).getAnsNum();
-											 Category_3=arrCons.get(i).getCategory();
+											XuanNum_3=arrCons_3.get(i).getXuanNum();
+											 ConsDate_3 =arrCons_3.get(i).getDate();
+											 ConsName_3 =arrCons_3.get(i).getConsName();
+											 SeenNum_3=arrCons_3.get(i).getSeenNum();
+											 ConsDetail_3 =arrCons_3.get(i).getConsDetail();
+											 KeptNum_3 =arrCons_3.get(i).getKeptNum();
+											 AnsNum_3=arrCons_3.get(i).getAnsNum();
+											 Category_3=arrCons_3.get(i).getCategory();
 											 for(int j=0;j<Category_3.size();j++){
 											 cate_3=Category_3.get(j)+","+cate_2;
 											 }
@@ -430,10 +439,10 @@ int size=arrCons.size();
 											 out.println("<li  >\n");
 											 out.println("<span>"+ConsDate_3+"</span>\n");
 											 out.println("</li>\n");
-											// out.println("<li>\n");
-											 //out.println("<span>悬赏：</span>\n");
-											//// out.println("<span>"+XuanNum_3+"</span>\n");
-											// out.println("</li>\n");
+											out.println("<li>\n");
+											out.println("<span>悬赏：</span>\n");
+											 out.println("<span>"+XuanNum_3+"</span>\n");
+											out.println("</li>\n");
 											 out.println("<li>\n");
 											 out.println("<span>浏览：</span>\n");
 											 out.println("<span>"+SeenNum_3+"</span>\n");
@@ -455,6 +464,7 @@ int size=arrCons.size();
 											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
 											 out.println("</ul>");		
 											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+										cate_3="";
 										 }			
 										
 										%>

@@ -9,6 +9,7 @@ public class consult {
 	private int seenNum;
 	private int ansNum;
 	private int keptNum;
+	private int xuanNum;
 	private Date date;
 	private ArrayList<String> category;
 	
@@ -43,7 +44,6 @@ public class consult {
 	public void setAnsNum(int ansNum) {
 		this.ansNum = ansNum;
 	}
-
 	public int getSeenNum() {
 		return seenNum;
 	}
@@ -51,6 +51,14 @@ public class consult {
 	public void setSeenNum(int seenNum) {
 		this.seenNum = seenNum;
 	}
+	public int getXuanNum() {
+		return xuanNum;
+	}
+
+	public void setXuanNum(int xaunNum) {
+		this.xuanNum = xaunNum;
+	}
+	
 
 	public String getConsDetail() {
 		return consDetail;

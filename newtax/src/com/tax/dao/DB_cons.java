@@ -10,7 +10,7 @@ public class DB_cons {
 	DBUtil db = new DBUtil();
 	public void addCons(consult cons) {
 		PreparedStatement pstm = null;
-		String sql = "insert into consult(consID,consName,consDetil,seenNum,ansNum,keptNum,date) values (?,?,?,?,?,?,?)";
+		String sql = "insert into consult(consID,consName,consDetil,seenNum,ansNum,keptNum,xuanNum,date) values (?,?,?,?,?,?,?,?)";
 		try {
 			pstm = db.getConPst(sql);
 			//设置参数
@@ -60,6 +60,7 @@ public class DB_cons {
 				cons.setSeenNum(rs.getInt("seenNum"));
 				cons.setAnsNum(rs.getInt("ansNum"));
 				cons.setKeptNum(rs.getInt("keptNum"));
+				cons.setXuanNum(rs.getInt("xuanNum"));
 				cons.setDate(rs.getDate("date"));
 			}
 		}catch(SQLException e) {
@@ -86,6 +87,7 @@ public class DB_cons {
 				cons.setSeenNum(rs.getInt("seenNum"));
 				cons.setAnsNum(rs.getInt("ansNum"));
 				cons.setKeptNum(rs.getInt("keptNum"));
+				cons.setXuanNum(rs.getInt("xuanNum"));
 				cons.setDate(rs.getDate("date"));
 			}
 		}catch(SQLException e) {
@@ -121,6 +123,7 @@ public class DB_cons {
 				cons.setSeenNum(res.getInt("seenNum"));
 				cons.setAnsNum(res.getInt("ansNum"));
 				cons.setKeptNum(res.getInt("keptNum"));
+				cons.setXuanNum(res.getInt("xuanNum"));
                 cons.setDate(res.getDate("date"));
 //				cons.setCategory(dca.getCate(cons.getConsID()));
 				arrCons.add(cons);
@@ -132,5 +135,66 @@ public class DB_cons {
 		}
 		dca.listCateInArr(arrCons);
 		return arrCons;
+	}
+	public ArrayList<consult> listConsByDate(){
+		ArrayList<consult> arrCons_1 = new ArrayList<consult>();
+		PreparedStatement pstm_1 = null;
+		
+		DB_category dca_1 = new DB_category();
+		try {
+			String sql = "select * from consult order by date desc";
+			pstm_1 = db.getConPst(sql);
+			ResultSet res = pstm_1.executeQuery();
+			while(res.next()) {
+				consult cons_1 = new consult();
+				cons_1.setConsID(res.getInt("consID"));
+				cons_1.setConsName(res.getString("consName"));
+				cons_1.setConsDetail(res.getString("consDetil"));
+				cons_1.setSeenNum(res.getInt("seenNum"));
+				cons_1.setAnsNum(res.getInt("ansNum"));
+				cons_1.setKeptNum(res.getInt("keptNum"));
+				cons_1.setDate(res.getDate("date"));
+				cons_1.setXuanNum(res.getInt("xuanNum"));
+//				cons.setCategory(dca.getCate(cons.getConsID()));
+				arrCons_1.add(cons_1);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(pstm_1,null);
+		}
+		dca_1.listCateInArr(arrCons_1);
+		return arrCons_1;
+	}
+	
+	public ArrayList<consult> listConsByXuan(){
+		ArrayList<consult> arrCons_3 = new ArrayList<consult>();
+		PreparedStatement pstm_3 = null;
+		
+		DB_category dca_3 = new DB_category();
+		try {
+			String sql = "select * from consult order by xuanNum desc";
+			pstm_3 = db.getConPst(sql);
+			ResultSet res = pstm_3.executeQuery();
+			while(res.next()) {
+				consult cons_3 = new consult();
+				cons_3.setConsID(res.getInt("consID"));
+				cons_3.setConsName(res.getString("consName"));
+				cons_3.setConsDetail(res.getString("consDetil"));
+				cons_3.setSeenNum(res.getInt("seenNum"));
+				cons_3.setAnsNum(res.getInt("ansNum"));
+				cons_3.setKeptNum(res.getInt("keptNum"));
+				cons_3.setDate(res.getDate("date"));
+				cons_3.setXuanNum(res.getInt("xuanNum"));
+//				cons.setCategory(dca.getCate(cons.getConsID()));
+				arrCons_3.add(cons_3);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally{
+			DBUtil.close(pstm_3,null);
+		}
+		dca_3.listCateInArr(arrCons_3);
+		return arrCons_3;
 	}
 }
