@@ -184,7 +184,7 @@ body {
 				<div class="post_share_fenlei">
 					<p>选择类型：</p>
 					<select>
-					  <option value="pleaseselect">请选择</option>
+					  <option  selected="selected" value=""  style="background-color: #EEEEEE;" disabled="disabled">请选择</option>
 					  <option value="jingyanfenxiang">经验分享</option>
 					  <option value="zhuanjiajiedu">专家解读</option>
 					</select>

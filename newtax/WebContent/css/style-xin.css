@@ -1175,6 +1175,7 @@ button{
 	width:200px;
 	height:34px;
 	border-radius:5px;
+	outline:none;
 }
 .post_share_title{
 	width:100%;
