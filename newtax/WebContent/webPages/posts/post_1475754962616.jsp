@@ -183,7 +183,7 @@ body {
 
 		<span class="fl">当前位置：<a href="javascript:history.go(-1);"
 			class="nav_style">专业解读</a></span> <span class="fl">&nbsp;&gt;&nbsp;</span> <span
-			class="fl"><a href="../posts/post_1475754962616"
+			class="fl"><a href="javascript:location.reload();"
 			class="nav_style">焦点问题的意见</a></span>
 	</div>
 	<div class="content">

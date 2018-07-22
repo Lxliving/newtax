@@ -184,7 +184,7 @@ body {
 
 		<span class="fl">当前位置：<a href="javascript:history.go(-1);"
 			class="nav_style">经验分享</a></span> <span class="fl">&nbsp;&gt;&nbsp;</span> <span
-			class="fl"><a href="../posts/post_1513478006486"
+			class="fl"><a href="javascript:location.reload();"
 			class="nav_style">分享车船税</a></span>
 	</div>
 	<div class="content">

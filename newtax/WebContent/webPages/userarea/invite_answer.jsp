@@ -29,8 +29,8 @@ System.out.println(hasLogin);
 <link rel="stylesheet" href="css/zeroModal.css" />
 <link rel="stylesheet" href="css/ScreenChange.css" />
 <link rel="stylesheet" href="css/style-xin.css" />
-<script src="ckeditor_4.10.0_standard_easyimage/ckeditor/ckeditor.js"></script>
 <style type="text/css">
+
 .shuiwu_main {
 	min-height: 650px;
 }
@@ -168,25 +168,48 @@ body {
 </html>
 <div class="shuiwu_main">
 	<!-- path -->
-	<div class="path_nav" style="width:89%;margin:1% 10% 2% 3%;font-size:1.05em;">
+	<div class="path_nav_inv_ans">
 
 		<span class="fl">当前位置：<a href="javascript:history.go(-1);"
-			class="nav_style" style="font-size:1em;">用户专区</a></span> <span class="fl">&nbsp;&gt;&nbsp;</span> <span
+			class="nav_style"">用户专区</a></span> <span class="fl">&nbsp;&gt;&nbsp;</span> <span
 			class="fl"><a href="javascript:location.reload();"
-			class="nav_style" style="font-size:1em;">发私信</a></span>
+			class="nav_style" style="padding-top:5px;">邀请回答</a></span>
 	</div>
-	<div class="sixincontent">
-        <p>发私信</p>
-        <br>
-        <div class="xian1" style="margin-bottom:1.8%;">
+	<div class="inv_ans_content">
+        <p>邀请回答</p>
+        <div class="xian1" style="margin:2% 0 5%;">
 			<div class="xian2" style="width:23%"></div>
 		</div>
 		<div>
 			<form>
-				<textarea id="editor" class="ckeditor"></textarea>
-				<div class="div_button">
-					<button class="sixin_button">发送</button>
-					<button class="sixin_button"  type="button" onclick="javascript:window.location.href='webPages/userarea/userarea.jsp'">返回</button>
+				<div class="tiwen_type">
+					<div class="wenti_fenlei">
+						<p>问题分类：</p>
+						<select>
+						  <option value="putongtiwen">普通提问</option>
+						  <option value="xuanshangtiwen">悬赏提问</option>
+						</select>
+					</div>
+					<div class="xuanshang_fenlei">
+						<p>悬赏：</p>
+						<select>
+						  <option value="xuanshang1">0</option>
+						  <option value="ixangshang2">20</option>
+						</select>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="tiwen_title">
+					<p>标&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;题：</p>
+					<input type="text">
+				</div>
+				<div class="tiwen_content">
+					<p>问题描述：</p>
+					<textarea></textarea>
+				</div>
+				<div class="div_inv_ans_button">
+					<button class="inv_ans_button">提交</button>
+					<button class="inv_ans_button"  type="button" onclick="javascript:window.location.href='webPages/userarea/userarea.jsp'">返回</button>
 				</div>
 			</form>
 		</div>

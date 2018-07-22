@@ -262,7 +262,14 @@ body {
 					%>
 					</div>
 					<div class="intro_floor3_2">
-						<a  onclick="tips()">邀请回答</a>
+					<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">邀请回答</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/invite_answer.jsp\">邀请回答</a>");
+						}
+					%>
 					</div>
 				</div>
 			</div>
@@ -306,7 +313,14 @@ body {
 					%>
 					</div>
 					<div class="intro_floor3_2">
-						<a onclick="tips()">邀请回答</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">邀请回答</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/invite_answer.jsp\">邀请回答</a>");
+						}
+					%>
 					</div>
 				</div>
 			</div>
@@ -350,7 +364,14 @@ body {
 					%>
 					</div>
 					<div class="intro_floor3_2">
-						<a  onclick="tips()">邀请回答</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">邀请回答</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/invite_answer.jsp\">邀请回答</a>");
+						}
+					%>
 					</div>
 				</div>
 			</div>
@@ -399,7 +420,14 @@ body {
 					%>
 					</div>
 					<div class="intro_floor3_2">
-						<a onclick="tips()">邀请回答</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">邀请回答</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/invite_answer.jsp\">邀请回答</a>");
+						}
+					%>
 					</div>
 				</div>
 			</div>
@@ -443,7 +471,14 @@ body {
 					%>
 					</div>
 					<div class="intro_floor3_2">
-						<a onclick="tips()">邀请回答</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">邀请回答</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/invite_answer.jsp\">邀请回答</a>");
+						}
+					%>
 					</div>
 				</div>
 			</div>
@@ -487,7 +522,14 @@ body {
 					%>
 					</div>
 					<div class="intro_floor3_2">
-						<a onclick="tips()">邀请回答</a>
+						<%
+						if(username==null){
+							out.println("<a  onclick=\"tips()\">邀请回答</a>");
+						}
+						else{
+							out.println("<a  href=\"webPages/userarea/invite_answer.jsp\">邀请回答</a>");
+						}
+					%>
 					</div>
 				</div>
 			</div>
