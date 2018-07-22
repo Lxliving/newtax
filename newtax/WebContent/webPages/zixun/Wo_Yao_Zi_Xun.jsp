@@ -23,6 +23,7 @@ System.out.println(hasLogin);
 <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script> 
 <link rel="stylesheet" href="css/tips.css" />
 <link rel="stylesheet" href="css/ScreenChange.css" /> 
+<script src="ckeditor_4.10.0_standard_easyimage/ckeditor/ckeditor.js"></script>
 
 <style type="text/css">
 
@@ -226,10 +227,10 @@ System.out.println(hasLogin);
 						<div class="add_content clearfix">
 							<div class="text_area">
 								<!-- <textarea name="content" id="content" class="fl" style="height:180px;"></textarea> -->
-								<textarea name="content" id="editor" class="fl"  cols="30" rows="10"></textarea>
+								<textarea id="editor" class="ckeditor"></textarea>
 							</div>
 						</div>
-						<div class="sub">
+						<div class="sub" style="margin-bottom:50px;">
 							<input type="submit" value="提交" class="button_submit pr">
 						</div>
 					</div>
@@ -237,12 +238,28 @@ System.out.println(hasLogin);
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	
-	
-	
-	
+</body>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="css/bottom.css" />
+</head>
+
+<body>
+	<div class="zixun_footers" id="footer">
+		<div class="zixun_footers_content">
+			<ul class="bottom_choice">
+				<li><a href="webPages/zixun/UseKnow.jsp" target="_blank">使用须知</a></li>
+				<li><a href="webPages/zixun/UseHelp.jsp" target="_blank">网站帮助</a></li>
+				<li><a href="webPages/zixun/ContactUs.jsp" target="_blank">联系我们</a></li>
+			</ul>
+			<ul>
+				
+				<li>安徽省国家税务局主办 ICP备案号********</li>
+				 <li>技术服务由科大讯飞股份有限公司提供</li> 
+				<li>通讯地址：合肥市包河区中山路3398号 联系电话：0551-12366</li>
+			</ul>
+		</div>
+	</div>
 </body>
 </html>
