@@ -116,7 +116,7 @@ body {
 					value="" /> <input name="page" id="page" value="1" type="hidden" />
 				<button type="submit" class="search_btn"></button>
 			</form>
-			<button class="consultation" onclick="userNotnull();">我要咨询</button>
+			<button class="consultation" onClick="ques();" >我要咨询</button>
 		</div>
 				<form  id="submitForm" action="listConsByCate" method="post">
 		<div class="choice" style="height: 40px;">
@@ -258,9 +258,10 @@ body {
 				 out.println("<li	onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
 				 out.println("<span class=\"star\"  >收藏</span>\n");
 				 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
-				 out.println("</ul>");		
+				 out.println("</ul>");	
+				 cate="";
 			 }			
-			 cate="";
+			 
 			%>
 						
 						
@@ -342,6 +343,22 @@ $(".title img").click(function(){
 	$(".dialog").hide(); 
 	$(".mask").hide(); 
 	});
+	function ques(){
+		 
+		var x=<%=hasLogined%>;
+		if(x==false){
+			$(".mask").css("opacity","0.3").show(); 
+			//制作对话框 
+			showDialog(); 
+			//展现css的特效 
+			$(".dialog").show(); 
+		}
+
+		else{
+			window.location.href='webPages/zixun/Wo_Yao_Zi_Xun.jsp';
+			
+		    }
+				};
 	</script>
 
 <head>
