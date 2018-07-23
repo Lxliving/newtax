@@ -1,0 +1,14 @@
+INSERT INTO `category` VALUES (1, 6, '发票系统故障及操作指导');
+INSERT INTO `category` VALUES (2, 1, '发票领购');
+INSERT INTO `category` VALUES (3, 1, '发票代开');
+INSERT INTO `category` VALUES (4, 1, '发票开据');
+INSERT INTO `category` VALUES (5, 2, '红字增值税发票开具');
+INSERT INTO `category` VALUES (6, 2, '申请有误能否作废');
+INSERT INTO `category` VALUES (7, 3, '一般纳税人资格');
+INSERT INTO `category` VALUES (8, 4, '辅导期一般纳税人');
+INSERT INTO `category` VALUES (9, 5, '专用发票认证抵扣');
+INSERT INTO `category` VALUES (10, 7, '发票领购');
+INSERT INTO `category` VALUES (11, 8, '一般纳税人资格');
+INSERT INTO `category` VALUES (12, 7, '专用发票认证抵扣');
+INSERT INTO `category` VALUES (13, 3, '发票代开');
+INSERT INTO `category` VALUES (14, 9, '征收率');

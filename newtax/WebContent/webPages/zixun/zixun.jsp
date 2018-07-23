@@ -235,9 +235,9 @@ int size_3=arrCons_3.size();
 			<div class="center">
 				<div class="aa" id="b" style="height:920px;">
 				  	            <ul class="classify" id="class_one">		    			
-				    				<li><button id="button1" onClick="show1()" style="font-size:20px;  border:0px;">最新咨询</button></li>
-				    				<li><button id="button2" onClick="show2()" style="font-size:16px; border:0px;" >热门咨询</button></li>
-				    				<li><button id="button3"  onClick="show3()" style="font-size:16px; border:0px;" >悬赏咨询</button></li>				
+				    				<li><button id="button1" onClick="show1()" style="font-size:18px;  border:0px;">最新咨询</button></li>
+				    				<li><button id="button2" onClick="show2()" style="font-size:18px; border:0px;" >热门咨询</button></li>
+				    				<li><button id="button3"  onClick="show3()" style="font-size:18px; border:0px;" >悬赏咨询</button></li>				
 					             </ul>
 				  	
 				  	<form id="quesForm" action="" style="display:none">
