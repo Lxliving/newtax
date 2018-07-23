@@ -20,7 +20,7 @@ public class DB_read {
 	
 	public void addRead(read rea) {
 		PreparedStatement pstm = null;
-		String sql = "insert into read(readID,readName,seenNum,,keptNum,date,text) values (?,?,?,?,?,?)";
+		String sql = "insert into reader(readID,readName,seenNum,,keptNum,date,text) values (?,?,?,?,?,?)";
 		try {
 			pstm = db.getConPst(sql);
 			//设置参数
@@ -46,7 +46,7 @@ public class DB_read {
 	public void update(read rea) {
 		//用以用户(提问者本身)修改咨询问题和内容
 		PreparedStatement pstm = null;
-		String sql = "update read set text = ? where readID = ?";
+		String sql = "update reader set text = ? where readID = ?";
 		try {
 			pstm = db.getConPst(sql);
 			pstm.setString(1,rea.getText());
@@ -64,7 +64,7 @@ public class DB_read {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from read where shareName = '"+ readName;
+			String sql = "select * from reader where shareName = '"+ readName;
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -89,7 +89,7 @@ public class DB_read {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from read where readID = '"+ readID+"'";
+			String sql = "select * from reader where readID = '"+ readID+"'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
