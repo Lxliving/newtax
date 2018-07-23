@@ -9,10 +9,19 @@ public class consult {
 	private int seenNum;
 	private int ansNum;
 	private int keptNum;
-	private int xuanNum;
 	private Date date;
+	private int xuanNum;
 	private ArrayList<String> category;
+	private int check;
 	
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+
 	public ArrayList<String> getCategory() {
 		return category;
 	}
@@ -36,21 +45,6 @@ public class consult {
 	public void setKeptNum(int keptNum) {
 		this.keptNum = keptNum;
 	}
-
-	public int getAnsNum() {
-		return ansNum;
-	}
-
-	public void setAnsNum(int ansNum) {
-		this.ansNum = ansNum;
-	}
-	public int getSeenNum() {
-		return seenNum;
-	}
-
-	public void setSeenNum(int seenNum) {
-		this.seenNum = seenNum;
-	}
 	public int getXuanNum() {
 		return xuanNum;
 	}
@@ -58,7 +52,21 @@ public class consult {
 	public void setXuanNum(int xuanNum) {
 		this.xuanNum = xuanNum;
 	}
-	
+	public int getAnsNum() {
+		return ansNum;
+	}
+
+	public void setAnsNum(int ansNum) {
+		this.ansNum = ansNum;
+	}
+
+	public int getSeenNum() {
+		return seenNum;
+	}
+
+	public void setSeenNum(int seenNum) {
+		this.seenNum = seenNum;
+	}
 
 	public String getConsDetail() {
 		return consDetail;

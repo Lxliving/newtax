@@ -20,7 +20,8 @@ public class DB_cons {
 			pstm.setInt(4, cons.getSeenNum());
 			pstm.setInt(5, cons.getAnsNum());
 			pstm.setInt(6, cons.getKeptNum());
-			pstm.setDate(7, (Date) cons.getDate());
+			pstm.setInt(7, cons.getXuanNum());
+			pstm.setDate(8, (Date) cons.getDate());
 			pstm.executeUpdate();
 			System.out.println("添加一条数据到consult");
 		}catch(SQLException e) {
@@ -29,6 +30,8 @@ public class DB_cons {
 			DBUtil.close(pstm, null);
 		}
 	}
+	
+	
 	public void update(consult cons) {
 		//用以用户(提问者本身)修改咨询问题和内容
 		PreparedStatement pstm = null;
@@ -43,13 +46,15 @@ public class DB_cons {
 			DBUtil.close(pstm,null);
 		}
 	}
+	
+	
 	public consult get(String consName) {
 		//根据问题名称找到问题，用于引擎搜索
 		consult cons = new consult();
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from consult where consName = ' "+ consName+ "'";
+			String sql = "select * from consult where consName = '"+ consName+ "'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -60,7 +65,7 @@ public class DB_cons {
 				cons.setSeenNum(rs.getInt("seenNum"));
 				cons.setAnsNum(rs.getInt("ansNum"));
 				cons.setKeptNum(rs.getInt("keptNum"));
-				cons.setXuanNum(rs.getInt("xuanNum"));
+				cons.setXuanNum(rs.getInt("keptNum"));
 				cons.setDate(rs.getDate("date"));
 			}
 		}catch(SQLException e) {
@@ -70,13 +75,15 @@ public class DB_cons {
 		}
 		return cons;
 	}
+	
+	
 	public consult getByID(int consID) {
 		//根据咨询问题ID找到问题。用于根据user查找consult
 		consult cons = new consult();
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from consult where consID = ' "+ consID + "'";
+			String sql = "select * from consult where consID = '"+ consID + "'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -87,7 +94,7 @@ public class DB_cons {
 				cons.setSeenNum(rs.getInt("seenNum"));
 				cons.setAnsNum(rs.getInt("ansNum"));
 				cons.setKeptNum(rs.getInt("keptNum"));
-				cons.setXuanNum(rs.getInt("xuanNum"));
+				cons.setXuanNum(rs.getInt("keptNum"));
 				cons.setDate(rs.getDate("date"));
 			}
 		}catch(SQLException e) {
@@ -97,6 +104,8 @@ public class DB_cons {
 		}
 		return cons;
 	}
+	
+	
 	public ArrayList<consult> getToList(ArrayList<Integer> consIDArr){
 		int len = consIDArr.size();
 		ArrayList<consult> arr = new ArrayList<consult>();
@@ -106,10 +115,12 @@ public class DB_cons {
 		return arr;
 	}
 	
+	
 	public ArrayList<consult> listCons(){
+		//在其他的DB类中这个方法被称为Query()
+		//用来查询当前数据库中存在的所有的咨询，并且按照访问量排序
 		ArrayList<consult> arrCons = new ArrayList<consult>();
 		PreparedStatement pstm = null;
-		
 		DB_category dca = new DB_category();
 		try {
 			String sql = "select * from consult order by seenNum desc";
@@ -124,7 +135,7 @@ public class DB_cons {
 				cons.setAnsNum(res.getInt("ansNum"));
 				cons.setKeptNum(res.getInt("keptNum"));
 				cons.setXuanNum(res.getInt("xuanNum"));
-                cons.setDate(res.getDate("date"));
+				cons.setDate(res.getDate("date"));
 //				cons.setCategory(dca.getCate(cons.getConsID()));
 				arrCons.add(cons);
 			}
@@ -136,6 +147,35 @@ public class DB_cons {
 		dca.listCateInArr(arrCons);
 		return arrCons;
 	}
+	
+	
+	public ArrayList<answer> getAnsList(int consID){
+		//通过consID来查找咨询条目下有哪些回答
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		PreparedStatement pstm = null;
+		DB_ans da = new DB_ans();
+		try {
+			String sql = "select ansID from cons_ans where consID = '"+consID+"'";
+			pstm = db.getConPst(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()) {
+				arr.add(rs.getInt("ansID"));
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(pstm, null);
+		}
+		int len = arr.size();
+		ArrayList<answer> res = new ArrayList<answer>();
+		for (int i=0; i<len; i++) {
+			if(da.getChecked(arr.get(i))==1)
+				res.add(da.getByID(arr.get(i)));
+		}
+		return res;
+	}
+	
 	public ArrayList<consult> listConsByDate(){
 		ArrayList<consult> arrCons_1 = new ArrayList<consult>();
 		PreparedStatement pstm_1 = null;

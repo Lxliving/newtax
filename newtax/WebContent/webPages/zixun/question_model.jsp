@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import ="java.util.*,com.tax.controller.*,com.tax.dao.*,com.tax.vo.*" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,7 +8,11 @@ boolean hasLogined = false;
 if(username!=null){
 	hasLogined = true;
 }
-
+ArrayList<answer> arrAns =new ArrayList<answer>();
+arrAns=(ArrayList<answer>)request.getSession().getAttribute("arraylist");
+consult cons = new consult(); 
+cons=(consult)request.getSession().getAttribute("consult");
+int size=arrAns.size();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -147,7 +152,12 @@ if(username!=null){
 			<span class="fl">当前位置：<a style="color:black;" href="webPages/zixun/question_model.jsp" class="nav_style">咨询</a></span>
 			<span class="fl">&nbsp;&gt;&nbsp;</span>
 			<span class="fl" style="width:300px;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
-			   <a href="webPages/zixun/question_model.jsp" class="nav_style"> 想了解个人所得税流程 </a>
+			   <a href="webPages/zixun/question_model.jsp" class="nav_style"> 
+			   <% String ques_name; 
+			   ques_name= cons.getConsName();
+			   out.println(ques_name);%>
+			   
+			   </a>
 			</span>
 		</div>
 		<div class="ques_content">
@@ -159,8 +169,13 @@ if(username!=null){
 				</div>
 				<div class="mark_content">
 					<ul>
-						<li><p>问题：想了解个人所得税流程</p></li>
-						<li><span>2017-12-20</span></li>
+						<li><p>问题：<%  out.println(ques_name);%></p></li>
+						<li><span>
+						<%
+						Date ConsDate;
+						ConsDate =cons.getDate();
+						out.println(ConsDate);
+						%></span></li>
 					</ul>
 				</div>
 				<!-- 头部 end -->
@@ -168,7 +183,13 @@ if(username!=null){
 					<!-- 问题详情 start -->
 					<div class="user_messageone_list_content">
 						<span>内容：</span>
-						<span id="hidden"><p>个人说的税是怎么计算的，流程是什么？</p>
+						<span id="hidden"><p>
+						
+						<% 
+						String Detail;
+						Detail =cons.getConsDetail();
+						out.println(Detail);
+						%></p>
 </span>
 					</div>
 					<!-- 问题详情 end -->
@@ -178,14 +199,21 @@ if(username!=null){
 		<div class="ques_content_three">
 			<div class="ques_content_three_nav">
 				<ul>
-					<li><span>浏览：</span><span>415</span></li>
-					<li><span>回答：</span><span>13</span></li>
+					<li><span>浏览：</span>
+					<span><%  int seenNum;
+					  seenNum=cons.getSeenNum();
+					  out.println(seenNum);
+					  %></span></li>
+					<li><span>回答：</span><span><%  int ansNum;
+					  ansNum=cons.getAnsNum();
+					  out.println(ansNum);
+					  %></span></li>
 						
 					
 					<li  style="cursor:pointer;float:right;cursor:pointer;" onclick="report();" class="report">举报</li>
-					<li class="star"  onclick="star();" style="cursor: pointer;float:right;">
-						收藏
-					</li>
+					<li	onClick="star(this)"  style="float:right;cursor:pointer;display:block\">
+											 <span class="star"  >收藏</span>
+											<span class="has_star" style="display: none">已收藏</span></li>
 				</ul>
 			</div>
 			<!-- 最佳回答 -->
@@ -198,8 +226,38 @@ if(username!=null){
 			</div>
 			<div class="user_messageTwo">
 				<div class="user_messageTwo_list" id="user_messageTwo_list">
-					<div id="answerContent" class="user_messageTwo_list_content"></div>
-					<div id=answersPaging class="box"></div>
+					<div id="answerContent" class="user_messageTwo_list_content">
+					<%
+					String ans_name;
+					Date ans_date;
+					int keep;
+					int keeps;
+					int good;
+					int goods;
+					   for(int i=0;i<size;i++){
+					    ans_name=arrAns.get(i).getTxt();
+					    ans_date=arrAns.get(i).getDate();
+					    keep=arrAns.get(i).getKeep();
+					    keeps=keep+1;
+					    good=arrAns.get(i).getGood();
+					    goods=good+1;
+					out.println("<ul style=\"border-bottom:1px dashed #ccc;height:136px;\">\n");
+					out.println("<li><a href=\"\">  <img src=\"image/u2815.png\" alt=\"Avatar\"></a></li>\n");
+					
+					out.println("<li><p class=\"over\"></p><p>"+ ans_name+"</p><p></p></li>\n");
+					out.println("  <li> <span>"+ ans_date+"</span></li>\n");
+					out.println("  <li	class=\"star_answer_action star-answer\" onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
+					out.println("  <span class=\"star\"  >收藏:</span><span class=\"has_star\" style=\"display: none\">已收藏:</span><span class=\"starCount star-answer-num\">"+keeps+"</span></li>\n");
+					out.println(" <li class=\"like-answer\" onClick=\"star(this)\" style=\"cursor:pointer;\">\n");
+					out.println("<span class=\"star\"  >点赞:</span>\n");
+					out.println("<span class=\"has_star\" style=\"display: none\">已点赞:</span>\n");
+					out.println("<span class=\"likeCount like-answer-num\">"+goods+"</span>  </li>\n");
+                 
+                   out.println(" <li id=\"report_one\" style=\"cursor:pointer;float:right;cursor:pointer;\" onclick=\"report();\" class=\"report\">举报</li> </ul>\n");
+                  
+					   }
+                   %>
+                  </div>
 				</div>
 			</div>
 		</div>
@@ -300,13 +358,15 @@ function star(obj){
      else{
      i=i+1;
        if(i%2!=0){
-	     $(".star").text("已收藏");
+	     $(obj).find('.star').css("display","none");
+	     $(obj).find('.has_star').css("display","block");
      }
        else{
-    	   $(".star").text("收藏");
+    	 $(obj).find('.has_star').css("display","none");
+    	 $(obj).find('.star').css("display","block");
      };
     }
-};
+}; 
 var j=0;
 function report(obj){
 	var x=<%=hasLogined%>;

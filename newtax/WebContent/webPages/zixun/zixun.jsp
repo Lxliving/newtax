@@ -24,6 +24,10 @@ ArrayList<consult> arrCons_3 = new ArrayList<consult>();
 
 arrCons_3 =cons.listConsByXuan();
 int size_3=arrCons_3.size();
+
+ArrayList<answer> arrAns =new ArrayList<answer>();
+arrAns=(ArrayList<answer>)request.getSession().getAttribute("arraylist");
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -252,7 +256,6 @@ int size_3=arrCons_3.size();
 					    			<div class="gary">
 									<div class="pink"></div>
 								</div>
-								<form  id="submitQes" action="listAnsUnderCons" method="post">
 										<%
 										int ConsId;
 										Date ConsDate;
@@ -277,10 +280,10 @@ int size_3=arrCons_3.size();
 											 cate=Category.get(j)+","+cate;
 											
 											 }
-										
+											 out.println("<form  id=\"submitQes\" action=\"listAnsUnderCons\" method=\"post\">");
 											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
 											 out.println("<li>\n");
-											 out.println("<input id=\""+ConsId+ "\" type=\"hidden\" class=\"quest\" name=\" ConsId\" value=\""+ConsId+ "\"	>" );
+											 out.println("<input id=\""+ConsId+ "\" type=\"hidden\" class=\"quest\" name=\"consID\" value=\""+ConsId+"\">" );
 											 out.println("<button type=\"submit\"  class=\"quest\"  href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</button>\n");
 											 out.println("</li>\n");
 											 out.println("<li  >\n");
@@ -307,11 +310,12 @@ int size_3=arrCons_3.size();
 											 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
 											 out.println("</ul>");		
 											 out.println("<style type=\"text/css\">.new_ul \tli\t span\t{color: black;font-size: 14px;}</style>");
+											 out.println("</form>");
 										cate="";
 										 }			
 										
 										%>
-										</form>
+							
 			</div>
 							
 								<div id="quesPaging_1" class="box">
@@ -338,7 +342,7 @@ int size_3=arrCons_3.size();
 									<div class="pink"></div>
 								</div>
 				    				
-									<form  id="submitQes" action="" method="post">
+									<form  id="submitQes" action="listAnsUnderCons" method="post">
 										<%
 										Date ConsDate_2;
 										String ConsName_2;
@@ -363,7 +367,7 @@ int size_3=arrCons_3.size();
 											 }
 											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
 											 out.println("<li>\n");
-											 out.println("<input id=\""+ConsId_2+ "\" type=\"hidden\" class=\"quest\" name=\" ConsId\" value=\""+ConsId_2+ "\"	>" );
+											 out.println("<input id=\""+ConsId_2+ "\" type=\"hidden\" class=\"quest\" name=\"consID\" value=\""+ConsId_2+ "\"	>" );
 											 out.println("<button type=\"submit\"  class=\"quest\"  href=\"webPages/zixun/question_model.jsp\">" +ConsName_2+"</button>\n");
 											 out.println("</li>\n");
 											 out.println("<li  >\n");
@@ -418,7 +422,7 @@ int size_3=arrCons_3.size();
 					    			<div class="gary">
 									    <div class="pink"></div>
 								    </div>
-				    			<form  id="submitQes" action="" method="post">
+				    			<form  id="submitQes" action="listAnsUnderCons" method="post">
 										<%
 										Date ConsDate_3;
 										String ConsName_3;
@@ -443,9 +447,10 @@ int size_3=arrCons_3.size();
 											 for(int j=0;j<Category_3.size();j++){
 											 cate_3=Category_3.get(j)+","+cate_2;
 											 }
+											 
 											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
 											 out.println("<li>\n");
-											 out.println("<input id=\""+ConsId_3+ "\" type=\"hidden\" class=\"quest\" name=\" ConsId\" value=\""+ConsId_3+ "\"	>" );
+											 out.println("<input id=\""+ConsId_3+ "\" type=\"hidden\" class=\"quest\" name=\"consID\" value=\""+ConsId_3+ "\"	>" );
 											 out.println("<button type=\"submit\"  class=\"quest\"  href=\"webPages/zixun/question_model.jsp\">" +ConsName_3+"</button>\n");
 											 out.println("</li>\n");
 											 out.println("<li  >\n");
