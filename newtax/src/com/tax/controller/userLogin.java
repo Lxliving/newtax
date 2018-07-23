@@ -51,21 +51,31 @@ public class userLogin extends HttpServlet {
 		}
 		else {
 		DB_user dbu = new DB_user();
-		if(dbu.loginVerify(userID, psw)) {
-			System.out.println("登陆成功");
+		if(userID.equals("admin") && psw.equals("123456")) {
+			System.out.println("管理员登陆成功");
 			hasLogined = true;
+			userID = "admin";
 			request.getSession().setAttribute("username", userID);
 			request.getSession().setAttribute("hasLogined", hasLogined);
-			response.sendRedirect("webPages/NewFile.jsp");
-			
-		}else {
-			System.out.println("登录失败");
-			out.print("<script language='javascript'>alert('输入有误，请重试');window.location.href='webPages/jiedu/login.jsp';</script>");
-//			response.sendRedirect("/webPages/login.jsp");
+			response.sendRedirect("webPages/NewFile.jsp");				//管理员登陆，应该返回一个不同的首页
+																		//
 		}
-//		RequestDispatcher requestDispatcher=request.getRequestDispatcher("http://www.baidu.com");
-//		requestDispatcher.forward(request, response);
-		}
+		else
+			if(dbu.loginVerify(userID, psw)) {
+				System.out.println("登陆成功");
+				hasLogined = true;
+				request.getSession().setAttribute("username", userID);
+				request.getSession().setAttribute("hasLogined", hasLogined);
+				response.sendRedirect("webPages/NewFile.jsp");
+				
+			}else {
+				System.out.println("登录失败");
+				out.print("<script language='javascript'>alert('输入有误，请重试');window.location.href='webPages/jiedu/login.jsp';</script>");
+	//			response.sendRedirect("/webPages/login.jsp");
+			}
+	//		RequestDispatcher requestDispatcher=request.getRequestDispatcher("http://www.baidu.com");
+	//		requestDispatcher.forward(request, response);
+			}
 	}
 	public void init () throws ServletException{
 		

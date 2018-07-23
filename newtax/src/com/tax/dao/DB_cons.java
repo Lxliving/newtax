@@ -29,6 +29,8 @@ public class DB_cons {
 			DBUtil.close(pstm, null);
 		}
 	}
+	
+	
 	public void update(consult cons) {
 		//用以用户(提问者本身)修改咨询问题和内容
 		PreparedStatement pstm = null;
@@ -43,13 +45,15 @@ public class DB_cons {
 			DBUtil.close(pstm,null);
 		}
 	}
+	
+	
 	public consult get(String consName) {
 		//根据问题名称找到问题，用于引擎搜索
 		consult cons = new consult();
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from consult where consName = ' "+ consName+ "'";
+			String sql = "select * from consult where consName = '"+ consName+ "'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -69,13 +73,15 @@ public class DB_cons {
 		}
 		return cons;
 	}
+	
+	
 	public consult getByID(int consID) {
 		//根据咨询问题ID找到问题。用于根据user查找consult
 		consult cons = new consult();
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from consult where consID = ' "+ consID + "'";
+			String sql = "select * from consult where consID = '"+ consID + "'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -95,10 +101,23 @@ public class DB_cons {
 		}
 		return cons;
 	}
+	
+	
+	public ArrayList<consult> getToList(ArrayList<Integer> consIDArr){
+		int len = consIDArr.size();
+		ArrayList<consult> arr = new ArrayList<consult>();
+		for(int i=0; i<len; i++) {
+			arr.add(getByID(consIDArr.get(i)));
+		}
+		return arr;
+	}
+	
+	
 	public ArrayList<consult> listCons(){
+		//在其他的DB类中这个方法被称为Query()
+		//用来查询当前数据库中存在的所有的咨询，并且按照访问量排序
 		ArrayList<consult> arrCons = new ArrayList<consult>();
 		PreparedStatement pstm = null;
-		
 		DB_category dca = new DB_category();
 		try {
 			String sql = "select * from consult order by seenNum desc";
@@ -112,6 +131,7 @@ public class DB_cons {
 				cons.setSeenNum(res.getInt("seenNum"));
 				cons.setAnsNum(res.getInt("ansNum"));
 				cons.setKeptNum(res.getInt("keptNum"));
+				cons.setDate(res.getDate("date"));
 //				cons.setCategory(dca.getCate(cons.getConsID()));
 				arrCons.add(cons);
 			}
@@ -123,4 +143,33 @@ public class DB_cons {
 		dca.listCateInArr(arrCons);
 		return arrCons;
 	}
+	
+	
+	public ArrayList<answer> getAnsList(int consID){
+		//通过consID来查找咨询条目下有哪些回答
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		PreparedStatement pstm = null;
+		DB_ans da = new DB_ans();
+		try {
+			String sql = "select ansID from cons_ans where consID = '"+consID+"'";
+			pstm = db.getConPst(sql);
+			ResultSet rs = pstm.executeQuery();
+			while(rs.next()) {
+				arr.add(rs.getInt("ansID"));
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(pstm, null);
+		}
+		int len = arr.size();
+		ArrayList<answer> res = new ArrayList<answer>();
+		for (int i=0; i<len; i++) {
+			if(da.getChecked(arr.get(i))==1)
+				res.add(da.getByID(arr.get(i)));
+		}
+		return res;
+	}
+	
 }

@@ -51,7 +51,7 @@ public class DB_category {
 		ResultSet rs = null;
 		ArrayList<String> arr = new ArrayList<String>();   //存储结果的ArrayList链表
 		try {
-			String sql = "select * from category where consID = "+consID;
+			String sql = "select * from category where consID = '"+consID +"'";
 			pstm = db.getConPst(sql);
 			rs = pstm.executeQuery();
 			while(rs.next()) {
@@ -64,5 +64,34 @@ public class DB_category {
 		}
 		return arr;
 	}
-
+	public void addConsByCate(ArrayList<consult> arr,String cateName) {
+		//这个方法向传参的ArrayList中添加一串cons对象，其中cons的分类名字是cateName
+		//实现方法是首先查询所有cateName的category表中元组，然后根据每个元组中的consID
+		//来从consult表中访问获取consult对象
+		PreparedStatement pstm = null;
+		ResultSet rs = null;
+		DB_cons dcon = new DB_cons();
+		ArrayList<Integer> consIDArr = new ArrayList<Integer>();
+		try {
+			String sql = "select consID from category where cateName = '"+cateName+"'";
+			pstm = db.getConPst(sql);
+			rs = pstm.executeQuery();
+			System.out.println("diyici");
+			while (rs.next()) {
+				int consID = rs.getInt("consID");
+				consIDArr.add(consID);
+			}
+			while(rs.next()) {
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(pstm,null);
+		}
+		arr.addAll(dcon.getToList(consIDArr));
+		int len = arr.size();
+		for(int i=0; i<len; i++) {
+			arr.get(i).setCategory(getCate(arr.get(i).getConsID()));
+		}
+	}
 }

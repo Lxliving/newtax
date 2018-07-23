@@ -8,7 +8,16 @@ public class ansList {
 	private Date date;			//date has its own format in mysql
 	private int goodNum;
 	private int keepNum;
+	private int check;
 	
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+
 	public int getKeepNum() {
 		return keepNum;
 	}

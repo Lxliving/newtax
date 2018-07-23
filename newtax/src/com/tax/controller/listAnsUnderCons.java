@@ -1,7 +1,6 @@
 package com.tax.controller;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -12,19 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.tax.dao.DB_cons;
+import com.tax.vo.answer;
 import com.tax.vo.consult;
 
 /**
- * Servlet implementation class listConsult
+ * Servlet implementation class listAnsUnderCons
  */
-@WebServlet("/listConsult")
-public class listConsult extends HttpServlet {
+@WebServlet("/listAnsUnderCons")
+public class listAnsUnderCons extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public listConsult() {
+    public listAnsUnderCons() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,8 +45,10 @@ public class listConsult extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
+		
+		int consID = Integer.parseInt(request.getParameter("ConsID"));
 		DB_cons dc = new DB_cons();
-		ArrayList<consult> res = dc.listCons();
+		ArrayList<answer> res = dc.getAnsList(consID);
 		HttpSession session = request.getSession();
 		session.setAttribute("arraylist", res);
 	}

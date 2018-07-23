@@ -11,7 +11,16 @@ public class consult {
 	private int keptNum;
 	private Date date;
 	private ArrayList<String> category;
+	private int check;
 	
+	public int getCheck() {
+		return check;
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
+	}
+
 	public ArrayList<String> getCategory() {
 		return category;
 	}

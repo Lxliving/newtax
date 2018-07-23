@@ -69,7 +69,7 @@ public class DB_share {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from share where shareName = ' "+ shareName;
+			String sql = "select * from share where shareName = '"+ shareName +"'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -94,7 +94,7 @@ public class DB_share {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from share where shareID = ' "+ shareID;
+			String sql = "select * from share where shareID = '"+ shareID+"'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -114,7 +114,7 @@ public class DB_share {
 		return sha;
 	}
 	public ArrayList<share> Query() {
-		String sql = "select * from share order by seenNum";
+		String sql = "select * from share order by seenNum desc";
 		int rowCount ;
 		PreparedStatement pstm = null;
 		ResultSet rs = null;

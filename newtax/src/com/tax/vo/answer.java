@@ -3,7 +3,7 @@ package com.tax.vo;
 import java.util.*;
 
 public class answer {
-	private String ansID;
+	private int ansID;
 	private String txt; 
 	private Date date;				// In mysql parameter date has its own date format
 	private int good;
@@ -41,11 +41,16 @@ public class answer {
 		this.txt = txt;
 	}
 
-	public String getAnsID() {
+	public int getAnsID() {
 		return ansID;
 	}
 
-	public void setAnsID(String ansID) {
+	public void setAnsID(int ansID) {
 		this.ansID = ansID;
+	}
+	public String toString() {
+		String str = "The answerID is: "+ ansID+",\nThe answerText is: "+txt+",\ndate: "+date+
+				"\ngoodNum: "+good+"\nkeptNum: "+kept;
+		return str;
 	}
 }

@@ -64,7 +64,7 @@ public class DB_read {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from read where shareName = ' "+ readName;
+			String sql = "select * from read where shareName = '"+ readName;
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -89,7 +89,7 @@ public class DB_read {
 		ResultSet rs = null;
 		PreparedStatement pstm = null;
 		try {
-			String sql = "select * from read where readID = '"+ readID;
+			String sql = "select * from read where readID = '"+ readID+"'";
 			pstm = db.getConPst(sql);
 			//rs保存结果集
 			rs = pstm.executeQuery();
@@ -109,7 +109,7 @@ public class DB_read {
 		return rea;
 	}
 	public ArrayList<read> Query() {
-		String sql = "select * from read order by seenNum desc";
+		String sql = "select * from reader order by seenNum desc";
 		PreparedStatement pstm = null;
 		ResultSet rs = null;
 		ArrayList<read> al = new ArrayList<read>();
