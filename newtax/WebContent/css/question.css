@@ -374,14 +374,18 @@ button{
 	margin-bottom: 7px;
   		margin-right: 5px;
 }
-.quesContent ul li:nth-child(1) a{
+.quesContent ul li:nth-child(1) button{
     width: 1000px;
+    font-size:16px;
     height: 20px;
     overflow: hidden;
     line-height: 20px;
     margin: 6px auto;
     color: black;
     background:url() no-repeat;
+    border:none;
+    text-align:left;
+    cursor: pointer;
 }
 .quesContent_2 ul li:nth-child(1){
 	text-overflow:ellipsis;
@@ -423,14 +427,18 @@ button{
 	margin-bottom: 7px;
   		margin-right: 5px;
 }
-.quesContent_2 ul li:nth-child(1) a{
+.quesContent_2 ul li:nth-child(1) button{
     width: 1000px;
+    font-size:16px;
     height: 20px;
     overflow: hidden;
     line-height: 20px;
     margin: 6px auto;
     color: black;
     background:url() no-repeat;
+    border:none;
+    text-align:left;
+    cursor: pointer;
 }
 .quesContent_3 ul li:nth-child(1){
 	text-overflow:ellipsis;
@@ -456,7 +464,7 @@ button{
 	
 }
 .quesContent_3 ul li:nth-child(6){
-	width: 500px;
+	width: 110px;
 	height: 35px;
 	text-overflow:ellipsis;
 	overflow:hidden;
@@ -478,14 +486,18 @@ button{
 	float:left;
 	cursor: pointer;
 }
-.quesContent_3 ul li:nth-child(1) a{
+.quesContent_3 ul li:nth-child(1) button{
     width: 1000px;
+    font-size:16px;
     height: 20px;
     overflow: hidden;
     line-height: 20px;
     margin: 6px auto;
     color: black;
     background:url() no-repeat;
+    border:none;
+    text-align:left;
+    cursor: pointer;
 }
 .tab_a_span{
 	float: left;

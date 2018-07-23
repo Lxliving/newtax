@@ -252,8 +252,9 @@ int size_3=arrCons_3.size();
 					    			<div class="gary">
 									<div class="pink"></div>
 								</div>
-								<form  id="submitQes" action="" method="post">
+								<form  id="submitQes" action="listAnsUnderCons" method="post">
 										<%
+										int ConsId;
 										Date ConsDate;
 										String ConsName;
 										int SeenNum;
@@ -261,6 +262,7 @@ int size_3=arrCons_3.size();
 										int KeptNum;
 										int AnsNum;
 										ArrayList<String> Category;
+										//int id_set=0;
 									   String cate="";
 										 for(int i=0;i<size;i++){
 											 ConsDate =arrCons_1.get(i).getDate();
@@ -270,12 +272,16 @@ int size_3=arrCons_3.size();
 											 KeptNum =arrCons_1.get(i).getKeptNum();
 											 AnsNum=arrCons_1.get(i).getAnsNum();
 											 Category=arrCons_1.get(i).getCategory();
+											 ConsId=arrCons_1.get(i).getConsID();
 											 for(int j=0;j<Category.size();j++){
 											 cate=Category.get(j)+","+cate;
+											
 											 }
+										
 											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
 											 out.println("<li>\n");
-											 out.println("<a href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</a>\n");
+											 out.println("<input id=\""+ConsId+ "\" type=\"hidden\" class=\"quest\" name=\" ConsId\" value=\""+ConsId+ "\"	>" );
+											 out.println("<button type=\"submit\"  class=\"quest\"  href=\"webPages/zixun/question_model.jsp\">" +ConsName+"</button>\n");
 											 out.println("</li>\n");
 											 out.println("<li  >\n");
 											 out.println("<span>"+ConsDate+"</span>\n");
@@ -342,6 +348,7 @@ int size_3=arrCons_3.size();
 										int AnsNum_2;
 										ArrayList<String> Category_2;
 									   String cate_2="";
+									   int ConsId_2;
 										 for(int i=0;i<size;i++){
 											 ConsDate_2 =arrCons.get(i).getDate();
 											 ConsName_2 =arrCons.get(i).getConsName();
@@ -350,12 +357,14 @@ int size_3=arrCons_3.size();
 											 KeptNum_2 =arrCons.get(i).getKeptNum();
 											 AnsNum_2=arrCons.get(i).getAnsNum();
 											 Category_2=arrCons.get(i).getCategory();
+											 ConsId_2=arrCons.get(i).getConsID();
 											 for(int j=0;j<Category_2.size();j++){
 											 cate_2=Category_2.get(j)+","+cate_2;
 											 }
 											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
 											 out.println("<li>\n");
-											 out.println("<a href=\"webPages/zixun/question_model.jsp\">" +ConsName_2+"</a>\n");
+											 out.println("<input id=\""+ConsId_2+ "\" type=\"hidden\" class=\"quest\" name=\" ConsId\" value=\""+ConsId_2+ "\"	>" );
+											 out.println("<button type=\"submit\"  class=\"quest\"  href=\"webPages/zixun/question_model.jsp\">" +ConsName_2+"</button>\n");
 											 out.println("</li>\n");
 											 out.println("<li  >\n");
 											 out.println("<span>"+ConsDate_2+"</span>\n");
@@ -419,6 +428,7 @@ int size_3=arrCons_3.size();
 										int AnsNum_3;
 										int XuanNum_3;
 										ArrayList<String> Category_3;
+										int ConsId_3;
 									   String cate_3="";
 										 for(int i=0;i<size;i++){
 											XuanNum_3=arrCons_3.get(i).getXuanNum();
@@ -429,12 +439,14 @@ int size_3=arrCons_3.size();
 											 KeptNum_3 =arrCons_3.get(i).getKeptNum();
 											 AnsNum_3=arrCons_3.get(i).getAnsNum();
 											 Category_3=arrCons_3.get(i).getCategory();
+											 ConsId_3=arrCons_3.get(i).getConsID();
 											 for(int j=0;j<Category_3.size();j++){
 											 cate_3=Category_3.get(j)+","+cate_2;
 											 }
 											 out.println("<ul class=\"new_ul\" style=\"border-bottom:1px dashed #ccc;height: 70px;\">\n");
 											 out.println("<li>\n");
-											 out.println("<a href=\"webPages/zixun/question_model.jsp\">" +ConsName_3+"</a>\n");
+											 out.println("<input id=\""+ConsId_3+ "\" type=\"hidden\" class=\"quest\" name=\" ConsId\" value=\""+ConsId_3+ "\"	>" );
+											 out.println("<button type=\"submit\"  class=\"quest\"  href=\"webPages/zixun/question_model.jsp\">" +ConsName_3+"</button>\n");
 											 out.println("</li>\n");
 											 out.println("<li  >\n");
 											 out.println("<span>"+ConsDate_3+"</span>\n");
@@ -601,6 +613,8 @@ $(".title img").click(function(){
 	$(".dialog").hide(); 
 	$(".mask").hide(); 
 	});
+	
+	$("#quest").click(function(){ })
 </script>
 
 <head>
