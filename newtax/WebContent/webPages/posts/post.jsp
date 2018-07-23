@@ -3,18 +3,18 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-String username =(String)request.getSession().getAttribute("username");
-boolean hasLogined = false;
-if(username!=null){
-	hasLogined = true;
-}
 
+boolean hasLogin =false;
+
+String username = (String)request.getSession().getAttribute("username");
+if (username!= null){
+	hasLogin = true;
+}
+System.out.println(hasLogin);
 DB_read rea=new DB_read();
 ArrayList<read> arrRea = new ArrayList<read>();
-
 arrRea =rea.Query();
 int size=arrRea.size();
-
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -24,16 +24,15 @@ int size=arrRea.size();
 <title>安徽省国家税务局税企互助交流平台</title>
 <meta name="viewport" content="width=device-width" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="css/read.css">
+<link rel="stylesheet" type="text/css" href="css/post.css">
 <link rel="stylesheet" href="css/page.css">
 <link rel="stylesheet" href="css/head.css">
 <link rel="icon" href="image/home/favicon.gif" type="image/x-icon" />
 <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/page.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="js/star.js" charset="utf-8"></script>
-<link rel="stylesheet" href="css/tips.css" />
+<script type="text/javascript" src="js/zeroModal.js" charset="utf-8"></script>
+<link rel="stylesheet" href="css/zeroModal.css" />
 <link rel="stylesheet" href="css/ScreenChange.css" />
-
 <style type="text/css">
 #four {
 	border-bottom: 1px solid #fff;
@@ -46,6 +45,10 @@ int size=arrRea.size();
 
 #fourplus {
 	background: #1B55A9;
+}
+
+.shuiwu_main {
+	min-height: 800px;
 }
 </style>
 
@@ -118,27 +121,10 @@ body {
 				out.println("</div>\n");
 				out.println("</div>\n");
 			}
-		
 		%>
-		<!-- 
-			<a href="webPages/jiedu/login.jsp" style="padding: 0 50px;"> <img
-				src="image/header/u198.png" class="person">
-			</a>
-			<div style="position: absolute; left: 20px; line-height: 0px;">
-				<div style="line-height: 13px;">
-					<a href="webPages/jiedu/login.jsp">登录</a>
-				</div>
-				<div style="line-height: 13px;">&nbsp;/&nbsp;</div>
-				<div style="text-align: left; line-height: 13px;">
-					<a href="webPages/jiedu/register.jsp">注册</a>
-				</div>
-			</div>
-		-->
 		</div>
 	</div>
 	</div>
-
-
 	<script>
         $(function(){
            $(".user_text").hover(function(){
@@ -179,37 +165,10 @@ body {
 	</script>
 </body>
 </html>
-<div class="mask" ></div> 
-<div class="dialog"> 
-  
-<div class="title"> 
-<img alt="点击可以关闭" src="image/icon/closepopwinbtn.png" width="20px" height="20px;"> 
-</div> 
-  
-<div class="tips_content"> 
-<img alt="" src="image/tips.png" width="115px" height="115px" style="position: absolute; margin-left: 80px;margin-right: 80px;margin-top: 0px;"> 
-	<div class="content_wenzi" ><span >请先登录用户</span> </div>
-</div> 
- 
-<div class="bottom"> 
-<input type="button" id="ok" value="确定" class="ok_btn" style=" "> 
-</div> 
-  
-</div>
-<div class="content">
-	<div class="content_main">
-		<div class="shuiwu_center_search"></div>
-		<div class="c_s_header">
-			<div class="lists">
-				<div class="ex_main_left_content_header">
-      <!--  <a class="sharetation"  href="webPages/posts/post_share" target="_blank"> + 发布</a> -->  
-					<ul style="background: none">
-						<li><span>专业解读</span></li>
-					</ul>
-				</div>
-				<div id="exSharingContainer">
-					<div class="exSharingContent">
- <%
+<div class="shuiwu_main">
+	<!-- path -->
+	<div class="path_nav">  
+<%
             String ReadID;
 			Date Date;
 			String ReadName;
@@ -224,50 +183,79 @@ body {
 				 SeenNum=arrRea.get(i).getSeenNum();
 				 KeptNum =arrRea.get(i).getKeptNum();	
 				 Text=arrRea.get(i).getText();
-				 out.println("<ul class=\"ex_main_left_content_ul uls clearfix\">\n");
-				 out.println("<li class=\"center_top\">\n");
-				 out.println("<ul>\n");
-				 out.println("<li style=\"padding-left: 20px\">\n");
-				 out.println("<a href=\"webPages/posts/post.jsp\">" +ReadName+"</a>\n");
-				 out.println("</li>\n");
-				 out.println("<li style=\"float:right;\" >\n");
-				 out.println("<span>"+Date+"</span>\n");
+
+				 out.println("<ul class=\"jiedu\">\n");
+				 out.println("<li class=\"f1\" style=\"width:560px;\">\n");
+				 out.println("<span>当前位置:<a href=\"javascript:history.go(-1);\"class=\"nav_style\">专业解读</a></span>\n");
+				 out.println("<span>&nbsp;&gt;&nbsp;</span>\n");
+				 out.println("<span><a href=\"webPages/posts/post.jsp\"class=\"nav_style\">"+ReadName+"</a></span>\n");
 				 out.println("</li>\n");
 				 out.println("</ul>\n");
+				 out.println("<ul class=\"content\">\n");
+				 out.println("<li class=\"content_title\">\n");
+				 out.println("<span>"+ReadName+"</span>\n");
 				 out.println("</li>\n");
-				 out.println("<li class=\"center_bottom\">\n");
-				 out.println("<ul style=\"background: none\">\n");
+				 out.println("</ul>\n");
+				 out.println("<ul class=\"uesr_who fl\">\n");
 				 out.println("<li>\n");
-				 out.println("<span>浏览：</span>\n");
+				 out.println("<span style=\"color: black;\" class=\"user_name\">\n");
+				 out.println("<a href=\"webPages/userarea/personIntro.jsp\">"+ReadName+"</a>\n");
+				 out.println("</span>\n");
+				 out.println("<span>发布</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>时间：</span>\n");
+				 out.println("<span>"+Date+"</span>\n");
+				 out.println("</li>\n");
+				 out.println("<li>\n");
+				 out.println("<span>浏览量：</span>\n");
 				 out.println("<span>"+SeenNum+"</span>\n");
 				 out.println("</li>\n");
 				 out.println("<li>\n");
 				 out.println("<span>收藏：</span>\n");
-				 out.println("<span class=\"starCount\">"+KeptNum+"</span>\n");
+				 out.println("<span>"+KeptNum+"</span>\n");
 				 out.println("</li>\n");
-				 out.println("<li	onClick=\"star(this)\"  style=\"float:right;cursor:pointer;display:block\">\n");
-				 out.println("<span class=\"star\"  >收藏</span>\n");
-				 out.println("<span class=\"has_star\" style=\"display: none\">已收藏</span></li>\n");
-				 out.println("</ul>");	
-				 out.println("</li>");	
-				 out.println("</ul>");	
+				 out.println("</ul>\n");
+				 out.println("<hr/>\n");
+				 out.println("<ul class=\"article\">\n");
+				 out.println("<li style=\"padding: 20px, 50px;\">"+Text+"</li>\n");
+				 out.println("</ul>\n");
 			 }	
 			%>
-					</div>
-					<div id="exSharingPage" class="box"></div>
-				</div>
-			</div>
-		</div>
+
 	</div>
 </div>
 
-<form style="display: none" id="postsForm" method="GET" action="../posts">
-	<input value="1" name="page" type="hidden"> <input value="10"
-		name="size" type="hidden"> <input value="1" name="type"
-		type="hidden" />
-</form>
-
-
+<!-- 弹出修改详细信息窗口 start -->
+<div class="ex_shuiwu_PopWinbg">
+	<div class="ex_shuiwu_PopWinContent">
+		<form method="POST" id="editPost">
+			<table cellspacing="0" cellpadding="0"
+				style="height: 330px; width: 600px;">
+				<tr>
+					<td align="center" colspan="6">修改详细信息</td>
+				</tr>
+				<tr>
+					<td style="width: 50px; height: 75px;">标题：</td>
+					<td><input id="title" type="text" name="title"
+						style="width: 100%; height: 45%; font-size: 20px;" value="焦点问题的意见">
+						<input name="id" type="hidden" style="width: 0%; height: 0%;"
+						value="post_1475754962616"></td>
+				</tr>
+				<tr>
+					<td style="width: 50px;">内容：</td>
+					<td><textarea id="editor" name="content">反驳对方当事人关于争议焦点问题的意见。</textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div class="ex_shuiwu_button">
+			<input class="fl" type="button" onclick="subEdit()" value="提交">
+			<input class="fr" type="button" value="返回" onclick="closePopWin()">
+		</div>
+		<div class="ex_shuiwu_Close_PopWin" onclick="closePopWin()"></div>
+	</div>
+</div>
 
 <html>
 <head>
@@ -373,79 +361,5 @@ body {
 			</ul>
 		</div>
 	</div>
-</body>
-</html>
-<!-- 底部内容end -->
-
-
-
-
-<script type="text/javascript">
-var i=0;
-function star(obj){
-	var x=<%=hasLogined%>;
-	if(x==false){
-	$(".mask").css("opacity","0.3").show(); 
-		//制作对话框 
-	showDialog(); 
-		//展现css的特效 
-	$(".dialog").show(); 
-			}
-     else{
-     i=i+1;
-       if(i%2!=0){
-	     $(obj).find('.star').css("display","none");
-	     $(obj).find('.has_star').css("display","block");
-     }
-       else{
-    	 $(obj).find('.has_star').css("display","none");
-    	 $(obj).find('.star').css("display","block");
-     };
-    }
-}; 
-</script>
-<script type="text/javascript">
-function a(){
-				$.ajax({  
-            		url:"../../Java Resources/src/com/tax/controller/listRead.java",//servlet文件的名称
-            		type:"GET",
-            		success:function(e){
-            			alert("servlet调用成功！");
-            		}
-            	});
-				
-			}
-</script>
-
-
-<script type="text/javascript">
-	
-		 var totalPages = Math.ceil(1.1);
-		 console.log('totalPages', totalPages);
-		 $('#exSharingPage').page({
-	         initPageNo: 1, 							// 初始页码
-	         totalPages: totalPages, 							// 总页数
-	         totalCount: '合计 11条数据', 			// 条目总数
-	         slideSpeed: 600, 							// 缓动速度。单位毫秒
-	         jump: true, 								// 是否支持跳转
-	         initLoad: false,
-	         callback: function(page) { 				// 回调函数
-	         	var postsForm = document.getElementById("postsForm");
-	         	postsForm.page.value = page;
-	         	postsForm.submit();
-	         }
-	     });
-		 jQuery(function(){
-		  	$('#nextPage').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		  	$('#prePage').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('#firstPage').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('#lastPage').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('.sel-page').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('.selpage').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('.jump-button').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('.turnPage').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 	$('.last-page').click(function(){$('html,body').animate({scrollTop: '100px'}, 0);return false;});
-		 });
-	</script>
 </body>
 </html>
