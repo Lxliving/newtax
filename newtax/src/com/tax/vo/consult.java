@@ -55,8 +55,8 @@ public class consult {
 		return xuanNum;
 	}
 
-	public void setXuanNum(int xaunNum) {
-		this.xuanNum = xaunNum;
+	public void setXuanNum(int xuanNum) {
+		this.xuanNum = xuanNum;
 	}
 	
 
